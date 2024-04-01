@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Pension Support Application{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Pension Support Application</h2>
+            <form action="{% url 'save_pension_support' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="full_name" class="form-label">Full Name:</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" placeholder="John Doe" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone_number" class="form-label">Phone Number:</label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="1234567890" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date_of_birth" class="form-label">Date of Birth:</label>
+                    <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
+                </div>
+                <div class="mb-3">
+                    <label for="reason_for_support" class="form-label">Reason for Pension Support:</label>
+                    <textarea class="form-control" id="reason_for_support" name="reason_for_support" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="proofDocument" class="form-label">Birth Certificate:</label>
+                    <input type="file" class="form-control" id="proofDocument" name="proof_document">
+                </div>
+                <!-- Add more form fields as needed -->
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <!-- Include additional content, such as related services or advertisements -->
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

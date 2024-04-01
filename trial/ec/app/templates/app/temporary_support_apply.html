@@ -1,0 +1,138 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+
+
+{% block title %}Temporary Support Application{% endblock title %}
+
+
+
+{% block main-content %}
+
+<style>
+
+    /* Custom styles for the form container */
+
+    .form-container {
+
+        background-color: #c69298; /* Baby pink color */
+
+        padding: 20px;
+
+        border-radius: 10px;
+
+    }
+
+</style>
+
+
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center"> <!-- Center the row -->
+
+        <div class="col-md-6">
+
+            <div class="card form-container"> <!-- Apply custom styles to the card -->
+
+                <div class="card-header">
+
+                    <h3 class="card-title">Temporary Financial Support Application</h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form action="{% url 'savetemporarysupport' %}" method="post">
+
+                        {% csrf_token %}
+
+                        <!-- Include your form fields here -->
+
+                        <div class="mb-3">
+
+                            <label for="applicantName" class="form-label">Applicant Name:</label>
+
+                            <input type="text" class="form-control" id="applicantName" name="applicant_name" placeholder="John Doe">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="email" class="form-label">Email:</label>
+
+                            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="address" class="form-label">Address:</label>
+
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Street - Locality - City">
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label for="city" class="form-label">City:</label>
+
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Your City">
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label for="state" class="form-label">State:</label>
+
+                                <input type="text" class="form-control" id="state" name="state" placeholder="Your State">
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="zipCode" class="form-label">Zip Code:</label>
+
+                            <input type="text" class="form-control" id="zipCode" name="zip_code" placeholder="123456">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="reasonForSupport" class="form-label">Reason for Support:</label>
+
+                            <textarea class="form-control" id="reasonForSupport" name="reason_for_support" rows="3" placeholder="Enter reason for support"></textarea>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="applicationDate" class="form-label">Application Date:</label>
+
+                            <input type="text" class="form-control" id="applicationDate" name="application_date" value="{{ application_date }}" >
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main-content %}
+
+
+

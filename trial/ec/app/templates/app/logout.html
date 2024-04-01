@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}
+Logout
+{% endblock title %}
+
+{% block main-content %}
+<!-- Logout message -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title">Logout</h5>
+                    <p class="card-text">You have been successfully logged out.</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login Again</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

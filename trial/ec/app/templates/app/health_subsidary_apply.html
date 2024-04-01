@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Health Subsidy Application{% endblock title %}
+
+{% block main-content %}
+<style>
+    /* Custom styles for the form container */
+    .form-container {
+        background-color: #c69298; /* Baby pink color */
+        padding: 20px;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center"> <!-- Center the row -->
+        <div class="col-md-6">
+            <div class="card form-container"> <!-- Apply custom styles to the card -->
+                <div class="card-header">
+                    <h3 class="card-title">Health Subsidy Application</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'savehealth' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name:</label>
+                            <input type="text" class="form-control" id="fullName" name="applicant_name" placeholder="John Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address:</label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Street - Locality - City">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">City:</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Your City">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="state" class="form-label">State:</label>
+                                <input type="text" class="form-control" id="state" name="state" placeholder="Your State">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="zipCode" class="form-label">Zip Code:</label>
+                            <input type="text" class="form-control" id="zipCode" name="zip_code" placeholder="123456">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="insuranceNumber" class="form-label">Insurance Number:</label>
+                            <input type="text" class="form-control" id="insuranceNumber" name="insurance_number" placeholder="Your Insurance Number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="policyHolder" class="form-label">Policy Holder:</label>
+                            <input type="text" class="form-control" id="policyHolder" name="policy_holder" placeholder="Policy Holder's Name">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="dob" class="form-label">Date of Birth:</label>
+                                <input type="date" class="form-control" id="dob" name="date_of_birth">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">Gender:</label>
+                                <select class="form-select" id="gender" name="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="medicalHistory" class="form-label">Medical History:</label>
+                            <textarea class="form-control" id="medicalHistory" name="medical_history" rows="3" placeholder="Enter Medical History"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="proofDocument" class="form-label">Upload income Proof Document:</label>
+                            <input type="file" class="form-control" id="proofDocument" name="proof_document">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block information %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card rounded-3 shadow-lg" style="background-color: rgba(17, 16, 17, 0.5); border: none;">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Welcome to Our Community Hub!</h1>
+          <p class="lead text-center">Empowering our community through essential services such as locality tax assistance, financial support programs, childcare services, and pension assistance. We provide support and guidance for understanding and managing your locality tax obligations, various financial support programs tailored to meet your individual needs, childcare options and resources available to support families in our community, and information and support services for pension planning and eligibility.</p>
+          <hr>
+          <p class="text-center">Join us to explore our vibrant community and discover the endless opportunities for growth and connection.</p>
+          <div class="text-center mt-4">
+            <a href="{% url 'about' %}" class="btn btn-primary btn-lg">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center mt-5">
+  <div class="welcome-animation"></div>
+  <p class="mt-3">Explore and enjoy!</p>
+</div>
+{% endblock information %}
+
+<style>
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.welcome-animation {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+</style>
+

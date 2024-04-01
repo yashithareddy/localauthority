@@ -1,0 +1,449 @@
+{% extends 'app/base.html' %}
+
+
+
+{% block title %}
+
+Council Services
+
+{% endblock title %}
+
+
+
+{% block main-content %}
+
+<style>
+
+  /* Add your CSS styles here */
+
+  .chart-container {
+
+    width: 300px;
+
+    height: 200px;
+
+    margin: auto;
+
+    margin-bottom: 20px; /* Add margin at the bottom of the chart */
+
+  }
+
+
+
+  .chart-data {
+
+    color: #020202; /* Set text color to black */
+
+    margin-bottom: 20px; /* Add margin at the bottom of paragraphs */
+
+  }
+
+
+
+  /* Chart styling */
+
+  .chart {
+
+    border: 1px solid #1b181b; /* Add a light gray border for the chart */
+
+  }
+
+
+
+  h2 {
+
+    margin-bottom: 20px;
+
+  }
+
+
+
+  /* Ensure scrollability */
+
+  #main-content {
+
+    overflow-y: auto;
+
+    max-height: 70vh; /* Limit max height to allow scrolling */
+
+    padding: 20px; /* Add padding for content */
+
+  }
+
+</style>
+
+
+
+<div id="main-content">
+
+
+
+  <h2>Milestones Achieved by the Local Council</h2>
+
+
+
+  <section id="healthSubsidies">
+
+    <h3>Health Subsidies</h3>
+
+    <p class="chart-data">The council prioritizes ensuring all residents have access to essential healthcare. Recognizing the financial challenges associated with medical bills, we offer health subsidies. These subsidies directly alleviate the burden on residents, helping them afford necessary healthcare services. By investing in your health, we invest in a stronger, healthier community. If you're interested in learning more about health subsidies and eligibility, please visit our website or contact us directly. By investing in your health, we invest in a stronger, healthier community as a whole. A community where residents can access the care they need thrives not only physically but also economically. Healthy residents are more productive, engaged, and contribute significantly to the community's overall well-being.</p>
+
+    <div class="chart-container">
+
+      <canvas id="healthSubsidiesChart" width="300" height="200"></canvas>
+
+    </div>
+
+    <p class="chart-data">The council is dedicated to fostering a thriving community, and that starts with ensuring everyone has access to quality healthcare. Our health subsidy programs are designed to address this critical need. These programs offer valuable assistance to residents, helping them overcome financial barriers and obtain the medical services they deserve. This translates into numerous benefits, empowering residents to manage their health proactively, seek preventive care, and access essential treatments. Ultimately, our health subsidies program strengthens our community by promoting a healthier and more empowered citizenry. Together, we can build a community where everyone has access to the healthcare they need to live a healthy and fulfilling life.</p>
+
+  </section>
+
+
+
+  <section id="wasteManagement">
+
+    <h3>Waste Management and Garbage Collection</h3>
+
+    <p class="chart-data">Effective waste management and garbage collection are essential for maintaining cleanliness and environmental sustainability in our community. The council recognizes the importance of proper waste disposal and is committed to improving waste management services for all residents. Our community thrives on a foundation of cleanliness and environmental responsibility. Unfortunately, ineffective waste management can have a significant negative impact on both. Overflowing bins, litter scattered across streets, and improper disposal methods not only create an unsightly environment but also pose serious health and environmental risks. The council recognizes the critical role effective waste management plays in maintaining a healthy and sustainable community. We are committed to providing improved waste management services that benefit all residents.</p>
+
+    <div class="chart-container">
+
+      <canvas id="wasteManagementChart" width="300" height="200"></canvas>
+
+    </div>
+
+    <p class="chart-data">In recent years, the council has significantly increased the number of employees dedicated to waste management and garbage collection. This expansion allows us to provide more efficient and timely waste collection services, ensuring a cleaner and healthier environment for everyone. Our commitment to waste management goes beyond simply collecting garbage. We are actively exploring and implementing solutions that address the entire waste lifecycle By combining a dedicated workforce with a comprehensive approach to the waste lifecycle, we're building a cleaner, healthier, and more sustainable community for everyone.</p>
+
+  </section>
+
+
+
+  <section id="financialSupport">
+
+    <h3>Financial Support for Low-Income People</h3>
+
+    <p class="chart-data">The council recognizes the critical role financial stability plays in individual well-being and overall community health. Unfortunately, economic hardship can create a cycle of disadvantage, making it difficult for low-income individuals to meet basic needs and access opportunities for advancement.This is why the council is dedicated to offering comprehensive financial support programs to those in need. We understand that a helping hand can be the key to overcoming immediate challenges and building a brighter future.By providing a helping hand to those in need, we're not just supporting individuals and families, we're investing in strengthening the economic and social fabric of our entire community.</p>
+
+    <div class="chart-container">
+
+      <canvas id="financialSupportChart" width="300" height="200"></canvas>
+
+    </div>
+
+    <p class="chart-data">The council recognizes that economic hardship can disproportionately impact certain segments of our community.  In recent years, we've taken a decisive step forward by significantly expanding our financial support programs for low-income individuals and families. This expansion is a direct reflection of our commitment to fostering an inclusive and equitable community where everyone has the opportunity to thrive.Our financial assistance programs are more than just a financial safety net. They represent a core value – the belief in a just and compassionate society. By providing essential support, we help alleviate the burden of basic needs, allowing individuals to focus on securing employment, pursuing education, and ultimately achieving self-sufficiency. This not only benefits them but also strengthens our community as a whole.The council's commitment to financial support is an ongoing process. We constantly evaluate and refine our programs to ensure they meet the evolving needs of our community.  By working together, we can create a future where everyone has the opportunity to reach their full potential.</p>
+
+</section>
+
+
+
+<section id="temporaryFinancialSupport">
+
+    <h3>Temporary Financial Support</h3>
+
+    <p class="chart-data">Temporary financial support is being offered by the council to assist individuals facing short-term financial difficulties. This support aims to provide immediate relief to those in need, helping them cover essential expenses such as housing, food, and utilities. By offering temporary financial support, the council strives to prevent individuals from falling into deeper financial hardship and promote stability within the community.This program is typically available to individuals or families experiencing a temporary financial setback. Common situations that might qualify for assistance include:</p>
+
+<ul>
+<li>Unexpected medical bills</li>
+<li>Job loss</li>
+<li>Car repairs</li>
+<li>Other emergency situations</li>
+</ul>
+
+<p class="chart-data">The council may have specific income or residency requirements.  It's important to check their website or contact them directly for details on eligibility and the types of situations they assist with.</p>
+
+<p>The council recognizes that unexpected situations can cause financial hardship for even the most responsible individuals.  To help residents overcome these challenges, they offer a temporary financial support program. This program is designed to provide immediate relief to those facing short-term financial difficulties.</p>
+
+<h3>Who Can Benefit?</h3>
+
+<p>This program is typically available to individuals or families experiencing a temporary financial setback. Common situations that might qualify for assistance include:</p>
+
+<ul>
+<li>Unexpected medical bills</li>
+<li>Job loss</li>
+<li>Car repairs</li>
+<li>Other emergency situations</li>
+</ul>
+
+<p class="chart-data">The council may have specific income or residency requirements.  It's important to check their website or contact them directly for details on eligibility and the types of situations they assist with.</p>
+
+    <div class="chart-container">
+
+      <canvas id="temporaryFinancialSupportChart" width="300" height="200"></canvas>
+
+    </div>
+
+  </section>
+
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+// Data for health subsidies chart
+
+const healthYears = ['2020', '2021', '2022'];
+
+const healthSubsidiesProvided = [200000, 400000, 450000]; // Number of subsidies provided each year
+
+
+
+// Data for waste management chart
+
+const wasteLabels = ['2019', '2020', '2021', '2022'];
+
+const wasteEmployees = [30, 40, 50, 60]; // Number of waste management employees each year
+
+
+
+// Data for financial support chart
+
+const financialYears = ['2020', '2021', '2022'];
+
+const financialSupportCount = [100000, 150000, 300000]; // Number of people helped each year
+
+
+
+// Create health subsidies chart
+
+var healthCtx = document.getElementById('healthSubsidiesChart').getContext('2d');
+
+var healthSubsidiesChart = new Chart(healthCtx, {
+
+  type: 'bar',
+
+  data: {
+
+    labels: healthYears,
+
+    datasets: [{
+
+      label: 'Number of Health Subsidies Provided',
+
+      data: healthSubsidiesProvided,
+
+      backgroundColor: [
+
+        '#42a5a5', // Pink for 2020
+
+        '#93a542', // Purple for 2021
+
+        '#42a54f'  // Green for 2022
+
+      ],
+
+      borderColor: 'black', // Set border color to black
+
+      borderWidth: 1
+
+    }]
+
+  },
+
+  options: {
+
+    scales: {
+
+      yAxes: [{
+
+        ticks: {
+
+          beginAtZero: true
+
+        }
+
+      }]
+
+    }
+
+  }
+
+});
+
+
+
+// Create waste management chart
+
+var wasteCtx = document.getElementById('wasteManagementChart').getContext('2d');
+
+var wasteManagementChart = new Chart(wasteCtx, {
+
+  type: 'pie',
+
+  data: {
+
+    labels: wasteLabels,
+
+    datasets: [{
+
+      label: 'Number of Waste Management Employees',
+
+      data: wasteEmployees,
+
+      backgroundColor: [
+
+        '#ff9999', // Red for 2019
+
+        '#ffb84d', // Orange for 2020
+
+        '#66cc99', // Green for 2021
+
+        '#4d94ff'  // Blue for 2022
+
+      ],
+
+      borderColor: 'black', // Set border color to black
+
+      borderWidth: 1
+
+    }]
+
+  },
+
+  options: {
+
+    scales: {
+
+      yAxes: [{
+
+        ticks: {
+
+          beginAtZero: true
+
+        }
+
+      }]
+
+    }
+
+  }
+
+});
+
+
+
+// Create financial support chart
+
+var financialCtx = document.getElementById('financialSupportChart').getContext('2d');
+
+var financialSupportChart = new Chart(financialCtx, {
+
+  type: 'bar',
+
+  data: {
+
+    labels: financialYears,
+
+    datasets: [{
+
+      label: 'Number of People Helped',
+
+      data: financialSupportCount,
+
+      backgroundColor: [
+
+        '#ff9999', // Red for 2020
+
+        '#ffb84d', // Orange for 2021
+
+        '#66cc99'  // Green for 2022
+
+      ],
+
+      borderColor: 'black', // Set border color to black
+
+      borderWidth: 1
+
+    }]
+
+  },
+
+  options: {
+
+    scales: {
+
+      yAxes: [{
+
+        ticks: {
+
+          beginAtZero: true
+
+        }
+
+      }]
+
+    }
+
+  }
+
+});
+
+
+
+  // Data for temporary financial support chart
+
+  const temporarySupportYears = ['2020', '2021', '2022'];
+
+  const temporarySupportAmounts = [50000, 75000, 100000]; // Amount of temporary support provided each year
+
+
+
+  // Create temporary financial support chart
+
+  var temporarySupportCtx = document.getElementById('temporaryFinancialSupportChart').getContext('2d');
+
+  var temporarySupportChart = new Chart(temporarySupportCtx, {
+
+    type: 'horizontalBar',
+
+    data: {
+
+      labels: temporarySupportYears,
+
+      datasets: [{
+
+        label: 'Temporary Financial Support Provided',
+
+        data: temporarySupportAmounts,
+
+        backgroundColor: 'rgba(75, 192, 192, 0.2)', // Light blue background color
+
+        borderColor: 'rgba(75, 192, 192, 1)', // Dark blue border color
+
+        borderWidth: 1
+
+      }]
+
+    },
+
+    options: {
+
+      scales: {
+
+        xAxes: [{
+
+          ticks: {
+
+            beginAtZero: true
+
+          }
+
+        }]
+
+      }
+
+    }
+
+  });
+
+</script>
+
+</script>
+
+
+
+{% endblock main-content %}

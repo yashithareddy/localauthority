@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle, rgb(200, 216, 228) 0%, rgb(244, 211, 240) 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -10px;
+        }
+        .card {
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.33% - 20px); /* Adjust width based on the number of cards per row */
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        #donut-chart-container {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard, {{ user.username }}</h1>
+ 
+    <!-- Donut Chart Box -->
+    <div id="donut-chart-container">
+        <canvas id="donutChart"></canvas>
+    </div>
+
+    <!-- Service Applications Cards -->
+    <div class="container">
+        <!-- Health Subsidies -->
+        <div class="card" style="background-color: #f8d7da;">
+            <h2>Health Subsidies</h2>
+            <ul>
+                {% for subsidy in health_subsidies %}
+                <li>{{ subsidy.applicant_name }} - {{ subsidy.status }}</li>
+                {% empty %}
+                <li>No health subsidies found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Waste Management Applications -->
+        <div class="card" style="background-color: #d4edda;">
+            <h2>Waste Management Applications</h2>
+            <ul>
+                {% for application in waste_applications %}
+                <li>{{ application.applicant_name }} - {{ application.status }}</li>
+                {% empty %}
+                <li>No waste management applications found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Temporary Support Applications -->
+        <div class="card" style="background-color: #cce5ff;">
+            <h2>Temporary Support Applications</h2>
+            <ul>
+                {% for application in temporary_support_applications %}
+                <li>{{ application.applicant_name }} - {{ application.status }}</li>
+                {% empty %}
+                <li>No temporary support applications found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Low Income Support Applications -->
+        <div class="card" style="background-color: #fff3cd;">
+            <h2>Low Income Support Applications</h2>
+            <ul>
+                {% for application in low_income_support_applications %}
+                <li>{{ application.applicant_name }} - {{ application.status }}</li>
+                {% empty %}
+                <li>No low income support applications found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Crime Reports -->
+        <div class="card" style="background-color: #f2d3d8;">
+            <h2>Crime Reports</h2>
+            <ul>
+                {% for report in crime_reports %}
+                <li>{{ report.title }} - {{ report.status }}</li>
+                {% empty %}
+                <li>No crime reports found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Locality Tax Payments -->
+        <div class="card" style="background-color: #d1ecf1;">
+            <h2>Locality Tax Payments</h2>
+            <ul>
+                {% for payment in locality_tax_payments %}
+                <li>{{ payment.full_name }} - {{ payment.status }}</li>
+                {% empty %}
+                <li>No locality tax payments found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Child Care Support Applications -->
+        <div class="card" style="background-color: #fff;">
+            <h2>Child Care Support Applications</h2>
+            <ul>
+                {% for application in child_care_support_applications %}
+                <li>{{ application.full_name }} - {{ application.status }}</li>
+                {% empty %}
+                <li>No child care support applications found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+ 
+        <!-- Pension Support Applications -->
+        <div class="card" style="background-color: #cce0d0;">
+            <h2>Pension Support Applications</h2>
+            <ul>
+                {% for application in pension_support_applications %}
+                <li>{{ application.full_name }} - {{ application.status }}</li>
+                {% empty %}
+                <li>No pension support applications found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Get data from Django template
+        var acceptedCount = {{ accepted_count | safe }};
+        var rejectedCount = {{ rejected_count | safe }};
+        var onHoldCount = {{ on_hold_count | safe }};
+        var totalAccepted = Object.values(acceptedCount).reduce((a, b) => a + b, 0);
+        var totalRejected = Object.values(rejectedCount).reduce((a, b) => a + b, 0);
+        var totalOnHold = Object.values(onHoldCount).reduce((a, b) => a + b, 0);
+
+        // Draw the donut chart
+        var ctx = document.getElementById('donutChart').getContext('2d');
+        var donutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Accepted', 'Rejected', 'On Hold'],
+                datasets: [{
+                    label: 'Service Applications',
+                    data: [totalAccepted, totalRejected, totalOnHold],
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false, // Adjust to false if you want to fix chart size
+                cutoutPercentage: 70, // Adjust to control the size of the hole in the middle
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        });
+    </script>
+
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>

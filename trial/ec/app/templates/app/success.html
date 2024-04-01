@@ -1,0 +1,127 @@
+{% extends 'app/base.html' %}
+{% load static %}
+ 
+{% block title %}
+Success Page
+{% endblock title %}
+ 
+{% block navbar %}
+{% comment %} Override navbar block to exclude navbar contents {% endcomment %}
+{% endblock navbar %}
+ 
+{% block main-content %}
+<!-- Dashboard layout -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-light bg-pink"> <!-- Add custom class bg-pink -->
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <!-- Remove the Settings link -->
+                        <li class="nav-item dropdown">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                            </li>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                               
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li> <!-- Added Logout option -->
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       
+        <!-- Page content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Apply Services Here!!</h1>
+            </div>
+            <!-- Services section -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(212, 156, 166);"> <!-- Apply pink background color here -->
+                        <div class="card-body">
+                            <h5 class="card-title">Health Subsidary</h5>
+                            <p class="card-text">Apply now to explore the full spectrum of health services available at your fingertips.</p>
+                            <a href="{% url 'health_subsidary_apply' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(216, 158, 168);"> <!-- Apply pink background color here -->
+                        <div class="card-body">
+                            <h5 class="card-title">Locality Tax</h5>
+                            <p class="card-text">Apply now to unlock the full potential of our platform and stay on top of your tax obligations.</p>
+                            <a href="{% url 'locality_tax_apply' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(220, 160, 170);"> <!-- Apply pink background color here -->
+                        <div class="card-body">
+                            <h5 class="card-title">Waste Management Services</h5>
+                            <p class="card-text">Apply now to access waste collection schedules, recycling guidelines, and report issues related to waste management.</p>
+                            <a href="{% url 'waste_management_apply' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(224, 162, 172);"> <!-- Apply pink background color here -->
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Support - Temporary Inability to Work</h5>
+                            <p class="card-text">Apply now for financial support if you're temporarily unable to work due to illness, injury, or other incapacitating circumstances.</p>
+                            <a href="{% url 'savetemporarysupport' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(224, 162, 172);"> <!-- Apply pink background color here -->
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Support - Low Income Citizens</h5>
+                            <p class="card-text">Apply now for financial support if you're on low income and need assistance.</p>
+                            <a href="{% url 'low_income_support_apply' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(224, 162, 172);">
+                        <div class="card-body">
+                            <h5 class="card-title">Report a Crime</h5>
+                            <p class="card-text">Help keep our community safe by reporting crimes. Your contribution matters.</p>
+                            <a href="{% url 'reportingcrimes' %}" class="btn btn-primary">Report Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(224, 162, 172);">
+                        <div class="card-body">
+                            <h5 class="card-title">Pension apply</h5>
+                            <p class="card-text">Help our community old age citizens with financial support</p>
+                            <a href="{% url 'save_pension_support' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3" style="background-color: rgb(224, 162, 172);">
+                        <div class="card-body">
+                            <h5 class="card-title">Child Care Support</h5>
+                            <p class="card-text">Help our comminity with financial support for children</p>
+                            <a href="{% url 'save_child_support_application' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more service boxes as needed -->
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock main-content %}
+ 

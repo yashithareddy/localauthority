@@ -1,0 +1,51 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Child Care Support{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            
+
+            <h2>Details</h2>
+            <p>Child Care Support provides financial assistance to families in need to help cover the costs of child care services. Eligible families can receive support for various child care expenses, including daycare fees, after-school programs, and summer camps.</p>
+
+            <h2>Application Form</h2>
+            <form action="{% url 'save_child_support_application' %}" method="post" class="pink-form">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="full_name" class="form-label">Full Name:</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" placeholder="John Doe" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone_number" class="form-label">Phone Number:</label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="1234567890" required>
+                </div>
+                <div class="mb-3">
+                    <label for="family_income" class="form-label">Family Income:</label>
+                    <input type="text" class="form-control" id="family_income" name="family_income" placeholder="Enter annual family income in numeric form only" required>
+                </div>
+                <div class="mb-3">
+                    <label for="reason_for_support" class="form-label">Reason for Child Care Support:</label>
+                    <textarea class="form-control" id="reason_for_support" name="reason_for_support" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="income_proof" class="form-label">Family Income Proof:</label>
+                    <input type="file" class="form-control" id="income_proof" name="income_proof" accept="image/*, application/pdf" required>
+                </div>
+                <!-- Add more form fields as needed -->
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <!-- Include additional content, such as related services or advertisements -->
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

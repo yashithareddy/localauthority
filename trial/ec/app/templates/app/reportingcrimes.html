@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Report Crime{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Report a Crime</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'reportingcrimes' %}" method="post">
+
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="crimeTitle" class="form-label">Title:</label>
+                            <input type="text" class="form-control" id="crimeTitle" name="title" placeholder="Enter the title of the crime">
+                        </div>
+                        <div class="mb-3">
+                            <label for="crimeDescription" class="form-label">Description:</label>
+                            <textarea class="form-control" id="crimeDescription" name="description" rows="3" placeholder="Describe the crime"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="crimeLocation" class="form-label">Location:</label>
+                            <input type="text" class="form-control" id="crimeLocation" name="location" placeholder="Enter the location of the crime">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reporterName" class="form-label">Your Name:</label>
+                            <input type="text" class="form-control" id="reporterName" name="reporter_name" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="evidence_proof" class="form-label">Evidence Proof:</label>
+                            <input type="file" class="form-control" id="evidence_proof" name="evidence_proof" accept="image/*, application/pdf" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
