@@ -4,48 +4,74 @@
 {% block title %}Home{% endblock title %}
 
 {% block information %}
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card rounded-3 shadow-lg" style="background-color: rgba(17, 16, 17, 0.5); border: none;">
-        <div class="card-body">
-          <h1 class="text-center mb-4">Welcome to Our Community Hub!</h1>
-          <p class="lead text-center">Empowering our community through essential services such as locality tax assistance, financial support programs, childcare services, and pension assistance. We provide support and guidance for understanding and managing your locality tax obligations, various financial support programs tailored to meet your individual needs, childcare options and resources available to support families in our community, and information and support services for pension planning and eligibility.</p>
-          <hr>
-          <p class="text-center">Join us to explore our vibrant community and discover the endless opportunities for growth and connection.</p>
-          <div class="text-center mt-4">
-            <a href="{% url 'about' %}" class="btn btn-primary btn-lg">Learn More</a>
+<div class="container-fluid px-0">
+  <!-- Footer Section -->
+  
+
+  <!-- Hero Section -->
+  <div class="hero-section" style="background-color: #2c3e50;">
+    <div class="container py-5 text-center text-white">
+      <h1 class="display-4 mb-4">Welcome to Local Council Of Birmingham</h1>
+      <p class="lead">By providing essential services like tax assistance, financial aid, childcare, and pension support, we empower our community. These programs alleviate financial stress, enable work opportunities, and ensure well-being for all residents, fostering a thriving and secure place to call home.</p>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services-section py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+      <h2 class="text-center mb-5">Our Services</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="service-card bg-white p-4 rounded text-center">
+            <i class="fas fa-money-bill-wave service-icon text-primary"></i>
+            <h3 class="mt-3">Financial Assistance</h3>
+            <p>Explore various financial support programs tailored to meet your individual needs.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="service-card bg-white p-4 rounded text-center">
+            <i class="fas fa-child service-icon text-primary"></i>
+            <h3 class="mt-3">Childcare Services</h3>
+            <p>Find resources and support services for childcare options in our community.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="service-card bg-white p-4 rounded text-center">
+            <i class="fas fa-building service-icon text-primary"></i>
+            <h3 class="mt-3">Locality Tax Assistance</h3>
+            <p>Get assistance and guidance for understanding and managing your locality tax obligations.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+          <div class="service-card bg-white p-4 rounded text-center">
+            <i class="fas fa-clipboard-check service-icon text-primary"></i>
+            <h3 class="mt-3">Pension Planning</h3>
+            <p>Learn about pension planning and eligibility with our support services.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="text-center mt-5">
-  <div class="welcome-animation"></div>
-  <p class="mt-3">Explore and enjoy!</p>
-</div>
+<footer class="footer-section bg-dark text-white py-4">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h4>About Us</h4>
+        
+        <a href="{% url 'about' %}" class="text-white">Read More</a>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h4>Contact Us</h4>
+        
+        <a href="{% url 'contact' %}" class="text-white">Contact Now</a>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h4>Milestones</h4>
+        
+        <a href="{% url 'info' %}" class="text-white">View Milestones</a>
+      </div>
+    </div>
+  </div>
+</footer>
 {% endblock information %}
-
-<style>
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(0.9);
-  }
-}
-
-.welcome-animation {
-  width: 150px;
-  height: 150px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-</style>
-

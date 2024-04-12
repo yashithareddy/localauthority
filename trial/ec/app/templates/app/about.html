@@ -1,21 +1,56 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-{% block title %}About{% endblock title %}
+{% block title %}About Us{% endblock title %}
 
 {% block main-content %}
-<div class="container mt-3">
-    <br>
-    <h2 class="text-center">About Us</h2>
-    <br>
+<div class="container mt-5">
     <div class="row">
-        <p class="fs-4 text-center">Welcome to Local Council Authority, your trusted resource for accessing essential services and information in our community. We envision a thriving community where all residents have equitable access to resources, opportunities, and services that empower them to lead fulfilling lives. We are committed to ensuring that our services and information are accessible to all residents, regardless of their background or abilities. We believe in transparency and accountability in all aspects of our operations, fostering trust and confidence among residents. We embrace diversity and inclusivity, valuing the unique perspectives and contributions of every member of our community. We continuously strive for innovation and improvement, seeking new ways to better serve the evolving needs of our community.</p>
+        <div class="col-lg-10 offset-lg-1">
+            <div class="header-banner text-center mb-4">
+                <!-- Adjusted size for the Birmingham City Council logo -->
+                <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" class="img-fluid" alt="Birmingham City Council Logo" style="max-width: 50%; height: auto;">
+            </div>
+            <div class="content-section">
+                <h2 class="text-center mb-4">Know Your Council: Local Council of Birmingham</h2>
+                <p class="text-justify">
+                    Birmingham, located in the heart of England, is a diverse and vibrant city known for its rich history, cultural landmarks, and economic vitality. The cityscape is a blend of historic architecture and modern developments, reflecting its status as a hub of commerce, industry, and innovation. Birmingham is home to a network of canals, earning it the nickname "Venice of the North." These waterways add to the city's charm and provide opportunities for leisure activities and transportation.
+                </p>
+                <p class="text-justify">
+                    Birmingham's localities offer a diverse range of atmospheres and amenities. From the bustling heart of the City Centre to the leafy suburb of Edgbaston, each area has its own unique character and attractions. Whether it's the vibrant student area of Selly Oak or the historic Jewellery Quarter, there's something for everyone in Birmingham's diverse neighborhoods.
+                </p>
+            </div>
+        </div>
     </div>
-    <br><br>
-    <h2 class="text-center">Mission</h2>
-    <br>
-    <div class="row">
-        <p class="fs-4 text-center">At Local Council Authority, our mission is to serve the residents of our community by providing accessible and efficient public services that enhance quality of life and promote civic engagement. We envision a thriving community where all residents have equitable access to resources, opportunities, and services that empower them to lead fulfilling lives.</p>
+    <!-- Embedding Birmingham Map -->
+    <div class="row mt-5">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="map-container">
+                <iframe
+                    width="100%"
+                    height="450"
+                    style="border:0"
+                    loading="lazy"
+                    allowfullscreen
+                    src="https://www.google.com/maps/d/u/0/embed?mid=1tXwvCGb-IhQInbyMBIAnsBlEI_c&ll=52.47860458348914%2C-1.8958235000000156&z=16"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Information about Birmingham Council services -->
+    <div class="row mt-5">
+        <div class="col-lg-10 offset-lg-1">
+            <div class="content-section">
+                <h2 class="text-center mb-4">How Birmingham Council Helps Residents</h2>
+                <p class="text-justify">
+                    The Birmingham Council is dedicated to serving its residents by providing essential services and support. From health subsidies to childcare assistance and pension support, the council strives to improve the well-being and quality of life for all individuals within the community. Residents can easily access these services through the Birmingham Council website or by visiting their local council offices. With a commitment to inclusivity and accessibility, the council ensures that every resident has the opportunity to benefit from the assistance and resources available.
+                </p>
+                <p class="text-justify">
+                    In addition to direct services, the Birmingham Council also plays a crucial role in community development and engagement. Through initiatives such as community events, workshops, and neighborhood improvement projects, the council fosters a sense of belonging and cooperation among residents. By empowering local communities and encouraging active participation, the council works towards building a stronger and more cohesive Birmingham for future generations.
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock main-content %}
+

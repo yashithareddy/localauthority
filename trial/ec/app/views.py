@@ -22,7 +22,10 @@ from .models import PensionSupport
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.decorators import login_required
+from django.db import models
+from .models import News
 # Create your views here.
+from django.contrib.auth import authenticate, login
 
 def home(request):
     return render(request, 'app/home.html')
@@ -388,7 +391,7 @@ def save_child_support_application(request):
         family_income = request.POST.get('family_income')
         reason_for_support = request.POST.get('reason_for_support')
         income_proof = request.FILES.get('income_proof')
-        evidence_proof = request.FILES.get('evidence_proof')
+        #evidence_proof = request.FILES.get('evidence_proof')
         # Save data to the database
         ChildCareSupport.objects.create(
             user=request.user,  # Associate with the logged-in user
@@ -398,7 +401,7 @@ def save_child_support_application(request):
             family_income=family_income,
             reason_for_support=reason_for_support,
             income_proof=income_proof,
-            evidence_proof=evidence_proof
+            #evidence_proof=evidence_proof
         )
 
         # Redirect to the success page
@@ -431,3 +434,108 @@ def save_pension_support_application(request):
         return render(request, "app/healthsuccess.html")
 
     return render(request, 'app/pensionsupport.html')
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from .models import HealthSubsidy, WasteManagementApplication, TemporarySupportApplication, LowIncomeSupportApplication, CrimeReport, LocalityTaxPayment, ChildCareSupport, PensionSupport
+
+@login_required(login_url='/admin/login/')
+@staff_member_required
+def admin_dashboard(request):
+    health_subsidies = HealthSubsidy.objects.all()
+    waste_applications = WasteManagementApplication.objects.all()
+    temporary_support_applications = TemporarySupportApplication.objects.all()
+    low_income_support_applications = LowIncomeSupportApplication.objects.all()
+    crime_reports = CrimeReport.objects.all()
+    locality_tax_payments = LocalityTaxPayment.objects.all()
+    child_care_support_applications = ChildCareSupport.objects.all()
+    pension_support_applications = PensionSupport.objects.all()
+    
+
+    # Repeat for other models...
+    return render(request, 'app/admin_dasboard.html', {'health_subsidies': health_subsidies, 'waste_applications': waste_applications , 'temporary_sipport_applications':temporary_support_applications,'low_income_support_applications':low_income_support_applications,'crime_reports':crime_reports, 'locality_tax_payments':locality_tax_payments,'child_care_support_applications':child_care_support_applications,'pension_support_applications': pension_support_applications,})
+
+from django.shortcuts import redirect, get_object_or_404
+from django.views.decorators.http import require_POST
+from .models import HealthSubsidy, WasteManagementApplication, TemporarySupportApplication, LowIncomeSupportApplication, CrimeReport, LocalityTaxPayment, ChildCareSupport, PensionSupport  # Import all application models
+
+@login_required
+@staff_member_required
+@require_POST
+def change_status(request, model_name, app_id):
+    # Map model names to their corresponding Django model classes
+    model_mapping = {
+        'health_subsidy': HealthSubsidy,
+        'waste_management_application': WasteManagementApplication,
+        'temporary_support_application': TemporarySupportApplication,
+        'low_income_support_application': LowIncomeSupportApplication,
+        'crime_report': CrimeReport,
+        'locality_tax_payment': LocalityTaxPayment,
+        'child_care_support': ChildCareSupport,
+        'pension_support': PensionSupport,
+        # Add mappings for other models as needed
+    }
+
+    # Get the model class based on the model name from the mapping
+    model = model_mapping.get(model_name)
+
+    if model:
+        if request.method == 'POST':
+            new_status = request.POST.get('new_status')
+            application = get_object_or_404(model, pk=app_id)
+            application.status = new_status
+            application.save()
+        return redirect('admin_dashboard')
+    else:
+        # Redirect to admin dashboard if the model name is not valid
+        return redirect('admin_dashboard')
+
+#def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None and user.is_staff:
+            login(request, user)
+            return redirect('admin_dashboard')
+        else:
+            messages.error(request, "Invalid username or password.")
+    return render(request, 'admin/login.html')
+
+#def adminlogin(request):
+    return render(request, 'admin/login.html')
+
+def news_list(request):
+    news_articles = News.objects.all().order_by('-publication_date')
+    return render(request, 'app/news_list.html', {'news_articles': news_articles})
+
+def news_detail(request, news_id):
+    news_article = News.objects.get(pk=news_id)
+    return render(request, 'app/news_detail.html', {'news_article': news_article})
+
+def update_news_status(request, news_id):
+    if request.method == 'POST':
+        new_status = request.POST.get('new_status')
+        try:
+            news_article = News.objects.get(pk=news_id)
+            news_article.status = new_status
+            news_article.save()
+            # Redirect back to the news list page after updating the status
+            return redirect('news_list')
+        except News.DoesNotExist:
+            # Handle the case where the news article does not exist
+            pass
+    # If the request method is not POST or news article doesn't exist, redirect to the news list page
+    return redirect('news_list')
+
+def add_news(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        # Assuming publication_date is auto-generated
+        news_article = News.objects.create(title=title, content=content)
+        # Redirect to the news list page after adding the news article
+        return redirect('news_list')
+    return render(request, 'app/add_news.html')
+

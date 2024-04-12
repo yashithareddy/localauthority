@@ -185,4 +185,14 @@ class PensionSupport(models.Model):
 
     def __str__(self):
         return self.full_name
+    
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    residency_proof = models.FileField()
+    length_of_residency = models.CharField(max_length=50)
 
+
+class News(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    publication_date = models.DateTimeField(auto_now_add=True)

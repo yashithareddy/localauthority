@@ -32,6 +32,20 @@ urlpatterns = [
     path('save_locality_tax/', views.save_locality_tax_payment, name='save_locality_tax'),
     path('save_child_support_application/', views.save_child_support_application, name='save_child_support_application'),
     path('save_pension_support/', views.save_pension_support_application, name='save_pension_support'),
+   #path('admin/login/', views.admin_login, name='admin_login'),
+    #path('custom_admin/dashboard/', views.admin_dashboard, name='custom_admin_dashboard'),
+    path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    #path('change-status/<int:app_id>/', views.change_status, name='change_status'),
+     #path('admin-login/', views.adminlogin, name='admin_login'),
+     #path('admin-login/', views.admin_login, name='admin_login'),
+     path('change_status/<str:model_name>/<int:app_id>/', views.change_status, name='change_status'),
+     path('news/', views.news_list, name='news_list'),
+     path('news/<int:news_id>/', views.news_detail, name='news_detail'),
+     path('news/<int:news_id>/update/', views.update_news_status, name='update_news_status'),
+     path('news/add/', views.add_news, name='add_news'),
+
+     
+
 
     
     
