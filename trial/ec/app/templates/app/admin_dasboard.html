@@ -1,129 +1,103 @@
-<!-- admin_dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Dashboard</title>
-        <style>
-            /* General styles */
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #7db8ca;
-            }
-    
-            .container {
-                max-width: 1200px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: #aad1db;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-    
-            h1 {
-                text-align: center;
-                margin-bottom: 30px;
-                color: #333;
-            }
-    
-            h2 {
-                margin-bottom: 15px;
-                color: #333;
-            }
-    
-            /* Application list styles */
-            .application-list {
-                list-style-type: none;
-                padding: 0;
-            }
-    
-            .application-item {
-                background-color: #f9f9f9;
-                margin-bottom: 20px;
-                padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-    
-            .application-info {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-    
-            .applicant-name {
-                font-weight: bold;
-            }
-    
-            .status {
-                color: #555;
-            }
-    
-            /* Application details styles */
-            .application-details {
-                margin-top: 10px;
-                padding: 10px;
-                background-color: #f7f7f7;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .application-details h3 {
-                margin-top: 0;
-                margin-bottom: 10px;
-                color: #333;
-            }
-    
-            .application-details p {
-                margin: 0;
-                line-height: 1.6;
-                color: #555;
-            }
-    
-            /* Status form styles */
-            .status-form {
-                display: flex;
-                align-items: center;
-            }
-    
-            .status-select {
-                margin-right: 10px;
-                padding: 5px;
-            }
-    
-            .status-btn {
-                padding: 5px 10px;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-    
-            .status-btn:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    </head>
-<body>
-    <div class="title-container">
-        <h1>Welcome Counciler , Check what residents Have applied !!</h1>
-    </div>
-<nav class="navbar">
-    <!-- Your navigation bar remains the same -->
-</nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Application list styles */
+        .application-list {
+            list-style-type: none;
+            padding: 0;
+            display: none; /* Initially hidden */
+        }
+
+        .application-item {
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .application-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .applicant-name {
+            font-weight: bold;
+        }
+
+        .status {
+            color: #555;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #007bff;
+        }
+        /* Search bar styles */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 50%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" onkeyup="searchApplications()" placeholder="Search for applications...">
+    </div>
 <div class="container">
-    <section id="health_subsidies">
-        <h2>Health Subsidies</h2>
-        <ul class="subsidy-list">
-            {% for subsidy in health_subsidies %}
-            <li class="subsidy-item">
-                <div class="subsidy-info">
+    
+    
+
+    <!-- Health Subsidies -->
+    <h2 class="toggle-button" onclick="toggleSubsidies()">Health Subsidies (Click to View Health Subsidy Applications)</h2>
+    <ul class="application-list" id="health-subsidies">
+        {% for subsidy in health_subsidies %}
+            <li class="application-item">
+                <div class="application-info">
                     <span class="applicant-name">{{ subsidy.applicant_name }}</span>
                     <span class="status">Status: {{ subsidy.status }}</span>
                 </div>
@@ -141,27 +115,29 @@
                     <h3>Application Details</h3>
                     <p>Email: {{ subsidy.email }}</p>
                     <p>Address: {{ subsidy.address }}, {{ subsidy.city }}, {{ subsidy.state }}, {{ subsidy.zip_code }}</p>
-                    <p>insurance_number: {{ subsidy.insurance_number }}</p>
-                    <p>gender: {{ subsidy.gender }}</p>
-                    <p>medical_history: {{ subsidy.medical_history }}</p>
+                    <p>Insurance Number: {{ subsidy.insurance_number }}</p>
+                    <p>Gender: {{ subsidy.gender }}</p>
+                    <p>Medical History: {{ subsidy.medical_history }}</p>
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
+        {% endfor %}
+    </ul>
+</div>
 
-    <section id="waste_management">
-        <h2>Waste Management Applications</h2>
-        <ul class="application-list">
-            {% for application in waste_applications %}
+<div class="container">
+    
+
+    <!-- Waste Management Applications -->
+    <h2 class="toggle-button" onclick="toggleWasteManagement()">Waste Management Applications (Click to View Waste Management Applications)</h2>
+    <ul class="application-list" id="waste-management">
+        {% for application in waste_applications %}
             <li class="application-item">
                 <div class="application-info">
                     <span class="applicant-name">{{ application.applicant_name }}</span>
                     <span class="status">Status: {{ application.status }}</span>
                 </div>
-                <!-- For Waste Management Applications -->
-<form action="{% url 'change_status' 'waste_management_application' application.pk %}" method="post" class="status-form">
+                <form action="{% url 'change_status' 'waste_management_application' application.pk %}" method="post" class="status-form">
                     {% csrf_token %}
                     <select name="new_status" class="status-select">
                         <option value="Accepted">Accepted</option>
@@ -183,19 +159,22 @@
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section id="temporary_support">
-        <h2>Temporary Support Applications</h2>
-        <ul class="application-list">
-            {% for application in temporary_support_applications %}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container">
+    
+
+    <!-- Temporary Support Applications -->
+    <h2 class="toggle-button" onclick="toggleTemporarySupport()">Temporary Financial Support Applications (Click to View)</h2>
+    <ul class="application-list" id="temporary-support">
+        {% for application in temporary_support_applications %}
             <li class="application-item">
                 <div class="application-info">
                     <span class="applicant-name">{{ application.applicant_name }}</span>
                     <span class="status">Status: {{ application.status }}</span>
                 </div>
-                <!-- For Temporary Support Applications -->
                 <form action="{% url 'change_status' 'temporary_support_application' application.pk %}" method="post" class="status-form">
                     {% csrf_token %}
                     <select name="new_status" class="status-select">
@@ -207,7 +186,7 @@
                 </form>
                 <!-- Display more detailed information -->
                 <div class="application-details">
-                    <h3>Temporary Support Application Details</h3>
+                    <h3>Temporary Financial Support Application Details</h3>
                     <p>Applicant Name: {{ application.applicant_name }}</p>
                     <p>Email: {{ application.email }}</p>
                     <p>Address: {{ application.address }}, {{ application.city }}, {{ application.state }}, {{ application.zip_code }}</p>
@@ -216,19 +195,22 @@
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section id="low_income_support">
-        <h2>Low Income Support Applications</h2>
-        <ul class="application-list">
-            {% for application in low_income_support_applications %}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container">
+    
+
+    <!-- Low Income Support Applications -->
+    <h2 class="toggle-button" onclick="toggleLowIncomeSupport()">Low Income Support Applications (Click to View)</h2>
+    <ul class="application-list" id="low-income-support">
+        {% for application in low_income_support_applications %}
             <li class="application-item">
                 <div class="application-info">
                     <span class="applicant-name">{{ application.applicant_name }}</span>
                     <span class="status">Status: {{ application.status }}</span>
                 </div>
-                <!-- For Low Income Support Applications -->
                 <form action="{% url 'change_status' 'low_income_support_application' application.pk %}" method="post" class="status-form">
                     {% csrf_token %}
                     <select name="new_status" class="status-select">
@@ -251,19 +233,22 @@
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section id="crime_reports">
-        <h2>Crime Reports</h2>
-        <ul class="application-list">
-            {% for report in crime_reports %}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container">
+    
+
+    <!-- Crime Reports -->
+    <h2 class="toggle-button" onclick="toggleCrimeReports()">Crime Reports (Click to View)</h2>
+    <ul class="application-list" id="crime-reports">
+        {% for report in crime_reports %}
             <li class="application-item">
                 <div class="application-info">
                     <span class="report-title">{{ report.title }}</span>
                     <span class="status">Status: {{ report.status }}</span>
                 </div>
-                <!-- For Crime Reports -->
                 <form action="{% url 'change_status' 'crime_report' report.pk %}" method="post" class="status-form">
                     {% csrf_token %}
                     <select name="new_status" class="status-select">
@@ -283,19 +268,22 @@
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section id="child_care_support">
-        <h2>Child Care Support Applications</h2>
-        <ul class="application-list">
-            {% for application in child_care_support_applications %}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container">
+    
+
+    <!-- Child Care Support Applications -->
+    <h2 class="toggle-button" onclick="toggleChildCareSupport()">Child Care Support Applications (Click to View)</h2>
+    <ul class="application-list" id="child-care-support">
+        {% for application in child_care_support_applications %}
             <li class="application-item">
                 <div class="application-info">
                     <span class="applicant-name">{{ application.full_name }}</span>
                     <span class="status">Status: {{ application.status }}</span>
                 </div>
-                <!-- For Child Care Support Applications -->
                 <form action="{% url 'change_status' 'child_care_support' application.pk %}" method="post" class="status-form">
                     {% csrf_token %}
                     <select name="new_status" class="status-select">
@@ -317,19 +305,22 @@
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section id="pension_support">
-        <h2>Pension Support Applications</h2>
-        <ul class="application-list">
-            {% for application in pension_support_applications %}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="container">
+    
+
+    <!-- Pension Support Applications -->
+    <h2 class="toggle-button" onclick="togglePensionSupport()">Pension Support Applications (Click to View)</h2>
+    <ul class="application-list" id="pension-support">
+        {% for application in pension_support_applications %}
             <li class="application-item">
                 <div class="application-info">
                     <span class="applicant-name">{{ application.full_name }}</span>
                     <span class="status">Status: {{ application.status }}</span>
                 </div>
-                <!-- For Pension Support Applications -->
                 <form action="{% url 'change_status' 'pension_support' application.pk %}" method="post" class="status-form">
                     {% csrf_token %}
                     <select name="new_status" class="status-select">
@@ -351,49 +342,98 @@
                     <!-- Add more details as needed -->
                 </div>
             </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section id="news_articles">
-        <h2>News Articles</h2>
-        <ul class="news-list">
-            {% for news_article in news_articles %}
-            <li class="news-item">
-                <div class="news-info">
-                    <span class="news-title">{{ news_article.title }}</span>
-                    <span class="publication-date">Publication Date: {{ news_article.publication_date }}</span>
-                    <span class="author">Author: {{ news_article.author }}</span>
-                    <span class="category">Category: {{ news_article.category }}</span>
-                    <span class="tags">Tags:
-                        {% for tag in news_article.tags.all %}
-                        {{ tag.name }}
-                        {% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </span>
-                </div>
-                <!-- Form for updating news article status -->
-                <form action="{% url 'update_news_status' news_article.id %}" method="post" class="status-form">
-                    {% csrf_token %}
-                    <select name="new_status" class="status-select">
-                        <option value="Draft">Draft</option>
-                        <option value="Published">Published</option>
-                        <option value="Archived">Archived</option>
-                    </select>
-                    <button type="submit" class="status-btn">Update Status</button>
-                </form>
-                <!-- Display more detailed information -->
-                <div class="news-details">
-                    <h3>News Article Details</h3>
-                    <p>{{ news_article.content }}</p>
-                    <!-- Add more details as needed -->
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-    
-    <!-- Add similar sections for other application types -->
-    <!-- Make sure to include forms for changing status for each application type -->
+        {% endfor %}
+    </ul>
 </div>
+
+<script>
+    function toggleSubsidies() {
+        var subsidiesList = document.getElementById("health-subsidies");
+        if (subsidiesList.style.display === "none") {
+            subsidiesList.style.display = "block";
+        } else {
+            subsidiesList.style.display = "none";
+        }
+    }
+    function toggleWasteManagement() {
+        var wasteManagementList = document.getElementById("waste-management");
+        if (wasteManagementList.style.display === "none") {
+            wasteManagementList.style.display = "block";
+        } else {
+            wasteManagementList.style.display = "none";
+        }
+    }
+
+    function toggleTemporarySupport() {
+        var temporarySupportList = document.getElementById("temporary-support");
+        if (temporarySupportList.style.display === "none") {
+            temporarySupportList.style.display = "block";
+        } else {
+            temporarySupportList.style.display = "none";
+        }
+    }
+    function toggleLowIncomeSupport() {
+        var lowIncomeSupportList = document.getElementById("low-income-support");
+        if (lowIncomeSupportList.style.display === "none") {
+            lowIncomeSupportList.style.display = "block";
+        } else {
+            lowIncomeSupportList.style.display = "none";
+        }
+    }
+    function toggleCrimeReports() {
+        var crimeReportsList = document.getElementById("crime-reports");
+        if (crimeReportsList.style.display === "none") {
+            crimeReportsList.style.display = "block";
+        } else {
+            crimeReportsList.style.display = "none";
+        }
+    }
+    function toggleChildCareSupport() {
+        var childCareSupportList = document.getElementById("child-care-support");
+        if (childCareSupportList.style.display === "none") {
+            childCareSupportList.style.display = "block";
+        } else {
+            childCareSupportList.style.display = "none";
+        }
+    }
+    function togglePensionSupport() {
+        var pensionSupportList = document.getElementById("pension-support");
+        if (pensionSupportList.style.display === "none") {
+            pensionSupportList.style.display = "block";
+        } else {
+            pensionSupportList.style.display = "none";
+        }
+    }
+
+</script>
+<script>
+    function searchApplications() {
+        // Get the search input value
+        var input = document.getElementById("searchInput");
+        var filter = input.value.toUpperCase();
+
+        // Get all application containers
+        var containers = document.querySelectorAll('.container');
+
+        // Loop through each application container
+        containers.forEach(function(container) {
+            // Get the toggle button and section header of the container
+            var toggleButton = container.querySelector('.toggle-button');
+            var sectionHeader = toggleButton.textContent.toUpperCase();
+
+            // Check if the section header contains the search input value
+            if (sectionHeader.indexOf(filter) > -1) {
+                // If found, display the container
+                container.style.display = "block";
+            } else {
+                // If not found, hide the container
+                container.style.display = "none";
+            }
+        });
+    }
+
+    // Toggle functions for each application section (same as before)
+
+</script>
 </body>
 </html>

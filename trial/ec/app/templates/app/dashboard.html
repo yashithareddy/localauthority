@@ -3,209 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- Include Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>User Dashboard</title>
     <style>
+        /* General styles */
         body {
             font-family: Arial, sans-serif;
-            background: radial-gradient(circle, rgb(200, 216, 228) 0%, rgb(239, 234, 234) 100%);
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
+
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin: 0 -10px;
-        }
-        .card {
-            border-radius: 5px;
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
-            margin: 10px;
-            width: calc(33.33% - 20px); /* Adjust width based on the number of cards per row */
             background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            margin-top: 0;
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
             color: #333;
         }
-        ul {
+
+        h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Application list styles */
+        .application-list {
             list-style-type: none;
             padding: 0;
+            display: none; /* Initially hidden */
         }
-        li {
-            margin-bottom: 10px;
-            color: #666;
-        }
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #fff;
-            background-color: #007bff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        a:hover {
-            background-color: #0056b3;
-        }
-        #donut-chart-container {
-            width: 300px;
-            height: 300px;
-            margin: auto;
+
+        .application-item {
+            background-color: #f9f9f9;
             margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .application-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .applicant-name {
+            font-weight: bold;
+        }
+
+        .status {
+            color: #555;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #007bff;
+        }
+        /* Search bar styles */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 50%;
+            max-width: 400px;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
+    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
     <h1>Welcome to Your Dashboard, {{ user.username }}</h1>
- 
-    <!-- Donut Chart Box -->
-    <div id="donut-chart-container">
-        <canvas id="donutChart"></canvas>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" onkeyup="searchApplications()" placeholder="Search for applications...">
     </div>
 
-    <!-- Service Applications Cards -->
     <div class="container">
         <!-- Health Subsidies -->
-        <div class="card" style="background-color: #f8d7da;">
-            <h2>Health Subsidies</h2>
-            <ul>
-                {% for subsidy in health_subsidies %}
-                <li>{{ subsidy.applicant_name }} - {{ subsidy.status }}</li>
-                {% empty %}
-                <li>No health subsidies found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
+        <h2 class="toggle-button" onclick="toggleSubsidies()">Health Subsidies (Click to View Health Subsidy Applications)</h2>
+        <ul class="application-list" id="health-subsidies">
+            {% for subsidy in health_subsidies %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="applicant-name">{{ subsidy.applicant_name }}</span>
+                        <span class="status">Status: {{ subsidy.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
         <!-- Waste Management Applications -->
-        <div class="card" style="background-color: #d4edda;">
-            <h2>Waste Management Applications</h2>
-            <ul>
-                {% for application in waste_applications %}
-                <li>{{ application.applicant_name }} - {{ application.status }}</li>
-                {% empty %}
-                <li>No waste management applications found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
-        <!-- Temporary Support Applications -->
-        <div class="card" style="background-color: #cce5ff;">
-            <h2>Temporary Support Applications</h2>
-            <ul>
-                {% for application in temporary_support_applications %}
-                <li>{{ application.applicant_name }} - {{ application.status }}</li>
-                {% empty %}
-                <li>No temporary support applications found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
+        <h2 class="toggle-button" onclick="toggleWasteManagement()">Waste Management Applications (Click to View)</h2>
+        <ul class="application-list" id="waste-management">
+            {% for application in waste_applications %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="applicant-name">{{ application.applicant_name }}</span>
+                        <span class="status">Status: {{ application.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="container">
+        <!-- Temporary Financial Support Applications -->
+        <h2 class="toggle-button" onclick="toggleTemporarySupport()">Temporary Financial Support Applications (Click to View)</h2>
+        <ul class="application-list" id="temporary-support">
+            {% for application in temporary_support_applications %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="applicant-name">{{ application.applicant_name }}</span>
+                        <span class="status">Status: {{ application.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
         <!-- Low Income Support Applications -->
-        <div class="card" style="background-color: #fff3cd;">
-            <h2>Low Income Support Applications</h2>
-            <ul>
-                {% for application in low_income_support_applications %}
-                <li>{{ application.applicant_name }} - {{ application.status }}</li>
-                {% empty %}
-                <li>No low income support applications found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
+        <h2 class="toggle-button" onclick="toggleLowIncomeSupport()">Low Income Support Applications (Click to View)</h2>
+        <ul class="application-list" id="low-income-support">
+            {% for application in low_income_support_applications %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="applicant-name">{{ application.applicant_name }}</span>
+                        <span class="status">Status: {{ application.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
         <!-- Crime Reports -->
-        <div class="card" style="background-color: #f2d3d8;">
-            <h2>Crime Reports</h2>
-            <ul>
-                {% for report in crime_reports %}
-                <li>{{ report.title }} - {{ report.status }}</li>
-                {% empty %}
-                <li>No crime reports found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
-        <!-- Locality Tax Payments -->
-        <div class="card" style="background-color: #d1ecf1;">
-            <h2>Locality Tax Payments</h2>
-            <ul>
-                {% for payment in locality_tax_payments %}
-                <li>{{ payment.full_name }} - {{ payment.status }}</li>
-                {% empty %}
-                <li>No locality tax payments found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
+        <h2 class="toggle-button" onclick="toggleCrimeReports()">Crime Reports (Click to View)</h2>
+        <ul class="application-list" id="crime-reports">
+            {% for report in crime_reports %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="report-title">{{ report.title }}</span>
+                        <span class="status">Status: {{ report.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+
+    <div class="container">
         <!-- Child Care Support Applications -->
-        <div class="card" style="background-color: #fff;">
-            <h2>Child Care Support Applications</h2>
-            <ul>
-                {% for application in child_care_support_applications %}
-                <li>{{ application.full_name }} - {{ application.status }}</li>
-                {% empty %}
-                <li>No child care support applications found.</li>
-                {% endfor %}
-            </ul>
-        </div>
- 
+        <h2 class="toggle-button" onclick="toggleChildCareSupport()">Child Care Support Applications (Click to View)</h2>
+        <ul class="application-list" id="child-care-support">
+            {% for application in child_care_support_applications %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="applicant-name">{{ application.full_name }}</span>
+                        <span class="status">Status: {{ application.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="container">
         <!-- Pension Support Applications -->
-        <div class="card" style="background-color: #cce0d0;">
-            <h2>Pension Support Applications</h2>
-            <ul>
-                {% for application in pension_support_applications %}
-                <li>{{ application.full_name }} - {{ application.status }}</li>
-                {% empty %}
-                <li>No pension support applications found.</li>
-                {% endfor %}
-            </ul>
-        </div>
+        <h2 class="toggle-button" onclick="togglePensionSupport()">Pension Support Applications (Click to View)</h2>
+        <ul class="application-list" id="pension-support">
+            {% for application in pension_support_applications %}
+                <li class="application-item">
+                    <div class="application-info">
+                        <span class="applicant-name">{{ application.full_name }}</span>
+                        <span class="status">Status: {{ application.status }}</span>
+                    </div>
+                    <!-- Display more detailed information if needed -->
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
     <script>
-        // Get data from Django template
-        var acceptedCount = {{ accepted_count | safe }};
-        var rejectedCount = {{ rejected_count | safe }};
-        var onHoldCount = {{ on_hold_count | safe }};
-        var totalAccepted = Object.values(acceptedCount).reduce((a, b) => a + b, 0);
-        var totalRejected = Object.values(rejectedCount).reduce((a, b) => a + b, 0);
-        var totalOnHold = Object.values(onHoldCount).reduce((a, b) => a + b, 0);
-
-        // Draw the donut chart
-        var ctx = document.getElementById('donutChart').getContext('2d');
-        var donutChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Accepted', 'Rejected', 'On Hold'],
-                datasets: [{
-                    label: 'Service Applications',
-                    data: [totalAccepted, totalRejected, totalOnHold],
-                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 206, 86, 0.2)'],
-                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: false, // Adjust to false if you want to fix chart size
-                cutoutPercentage: 70, // Adjust to control the size of the hole in the middle
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                }
+        function toggleSubsidies() {
+            var subsidiesList = document.getElementById("health-subsidies");
+            if (subsidiesList.style.display === "none") {
+                subsidiesList.style.display = "block";
+            } else {
+                subsidiesList.style.display = "none";
             }
-        });
-    </script>
+        }
+        function toggleWasteManagement() {
+            var wasteManagementList = document.getElementById("waste-management");
+            if (wasteManagementList.style.display === "none") {
+                wasteManagementList.style.display = "block";
+            } else {
+                wasteManagementList.style.display = "none";
+            }
+        }
+        function toggleTemporarySupport() {
+            var temporarySupportList = document.getElementById("temporary-support");
+            if (temporarySupportList.style.display === "none") {
+                temporarySupportList.style.display = "block";
+            } else {
+                temporarySupportList.style.display = "none";
+            }
+        }
+        function toggleLowIncomeSupport() {
+            var lowIncomeSupportList = document.getElementById("low-income-support");
+            if (lowIncomeSupportList.style.display === "none") {
+                lowIncomeSupportList.style.display = "block";
+            } else {
+                lowIncomeSupportList.style.display = "none";
+            }
+        }
+        function toggleCrimeReports() {
+            var crimeReportsList = document.getElementById("crime-reports");
+            if (crimeReportsList.style.display === "none") {
+                crimeReportsList.style.display = "block";
+            } else {
+                crimeReportsList.style.display = "none";
+            }
+        }
+        function toggleChildCareSupport() {
+            var childCareSupportList = document.getElementById("child-care-support");
+            childCareSupportList.style.display = childCareSupportList.style.display === "none" ? "block" : "none";
+        }
 
-    <a href="{% url 'logout' %}">Logout</a>
+        function togglePensionSupport() {
+            var pensionSupportList = document.getElementById("pension-support");
+            pensionSupportList.style.display = pensionSupportList.style.display === "none" ? "block" : "none";
+        }
+
+
+        // Add similar toggle functions for other application sections if needed
+    </script>
+    <script>
+        function searchApplications() {
+            // Get the search input value
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toUpperCase();
+
+            // Get all application containers
+            var containers = document.querySelectorAll('.container');
+
+            // Loop through each application container
+            containers.forEach(function(container) {
+                // Get the toggle button and section header of the container
+                var toggleButton = container.querySelector('.toggle-button');
+                var sectionHeader = toggleButton.textContent.toUpperCase();
+
+                // Check if the section header contains the search input value
+                if (sectionHeader.indexOf(filter) > -1) {
+                    // If found, display the container
+                    container.style.display = "block";
+                } else {
+                    // If not found, hide the container
+                    container.style.display = "none";
+                }
+            });
+        }
+
+        // Toggle functions for each application section (same as before)
+
+    </script>
 </body>
 </html>

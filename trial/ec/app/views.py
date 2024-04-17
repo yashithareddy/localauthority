@@ -539,3 +539,20 @@ def add_news(request):
         return redirect('news_list')
     return render(request, 'app/add_news.html')
 
+def financial_assisstance(request):
+    return render(request, 'app/financial_assisstance.html')
+
+def childcare_support(request):
+    return render(request, 'app/childcare_support.html')
+
+def localitytaxinfo(request):
+    return render(request,'app/localitytaxinfo.html')
+
+def pensionplanninginfo(request):
+    return render(request,'app/pensionplanninginfo.html')
+
+def wastemanagementinfo(request):
+    return render(request,'app/wastemanagementinfo.html')
+
+def healthsubsidieinfo(request):
+    return render(request,'app/healthsubsidieinfo.html')

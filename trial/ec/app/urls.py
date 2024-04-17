@@ -43,8 +43,13 @@ urlpatterns = [
      path('news/<int:news_id>/', views.news_detail, name='news_detail'),
      path('news/<int:news_id>/update/', views.update_news_status, name='update_news_status'),
      path('news/add/', views.add_news, name='add_news'),
+     path('financial_assisstance', views.financial_assisstance, name='financial_assisstance'),
+     path('childcare_support', views.childcare_support, name='childcare_support'),
+     path('localitytaxinfo', views.localitytaxinfo, name='localitytaxinfo'),
+     path('pensionplanninginfo', views.pensionplanninginfo, name='pensionplanninginfo'),
+     path('wastemanagementinfo', views.wastemanagementinfo, name='wastemanagementinfo'),
+     path('healthsubsidieinfo', views.healthsubsidieinfo, name='healthsubsidieinfo'),
 
-     
 
 
     
