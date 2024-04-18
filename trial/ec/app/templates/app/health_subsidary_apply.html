@@ -2,7 +2,7 @@
 <html lang="en">
     <style>
         body {
-            background: radial-gradient(circle, rgb(200, 216, 228) 0%, rgb(79, 143, 164) 100%);
+            background: radial-gradient(circle, rgb(229, 232, 235) 0%, rgb(230, 233, 235) 100%);
             animation: animateBackground 10s infinite alternate;
         }
         
@@ -35,11 +35,21 @@
    
     /* Custom styles for the form container */
     .form-container {
-        background-color: #c69298; /* Baby pink color */
+        background-color: #c4c9ce; /* Baby pink color */
         padding: 20px;
         border-radius: 10px;
     }
+    .footer-light-brown {
+        background-color: #c4c9ce; /* Light brown color */
+        color: #000000; /* Black text color */
+    }
 </style>
+<div class="text-center mt-5 mb-4">
+   
+    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
+    <h1 class="mt-4" style="text-align: center;">Apply For Your Health Subsidie</h1>
+    <p class="lead" style="text-align: center;"><strong>Ensuring Access to Affordable Healthcare</strong></p>
+  </div>
  
 <div class="container mt-5">
     <div class="row justify-content-center"> <!-- Center the row -->
@@ -115,3 +125,14 @@
         </div>
     </div>
 </div>
+
+<footer class="footer-section footer-light-brown py-4">
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h4>Logout</h4>
+            <a href="{% url 'logout' %}" class="text-black">Logout</a>
+          </div>
+        </div>
+      </div>
+  </footer>

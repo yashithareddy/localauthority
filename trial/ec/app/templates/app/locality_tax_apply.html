@@ -3,7 +3,7 @@
 <html lang="en">
     <style>
         body {
-            background: radial-gradient(circle, rgb(200, 216, 228) 0%, rgb(79, 143, 164) 100%);
+            background: radial-gradient(circle, rgb(237, 240, 243) 0%, rgb(221, 225, 226) 100%);
             animation: animateBackground 10s infinite alternate;
         }
         
@@ -32,10 +32,16 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+<div class="text-center mt-5 mb-4">
+    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
+    <h1 class="mt-4" style="text-align: center;">Pay Your Locality Tax</h1>
+    
+  </div>
+  
 <style>
     /* Custom styles for the form container */
     .form-container {
-        background-color: #847f84; /* Use the background color from base.html */
+        background-color: #c4c9ce; /* Use the background color from base.html */
         padding: 20px;
         border-radius: 10px;
         color: #333; /* Setting text color */
@@ -43,6 +49,10 @@
 
     .cards-accepted {
         max-width: 150px;
+    }
+    .footer-light-brown {
+        background-color: #c4c9ce; /* Light brown color */
+        color: #000000; /* Black text color */
     }
 </style>
 
@@ -117,3 +127,13 @@
         </div>
     </div>
 </div>
+<footer class="footer-section footer-light-brown py-4">
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h4>Logout</h4>
+            <a href="{% url 'logout' %}" class="text-black">Logout</a>
+          </div>
+        </div>
+      </div>
+  </footer>
