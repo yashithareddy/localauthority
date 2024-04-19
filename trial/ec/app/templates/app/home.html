@@ -1,122 +1,176 @@
 {% extends 'app/base.html' %}
 {% load static %}
-
+ 
 {% block title %}Home{% endblock title %}
-
+ 
 {% block information %}
-<div class="container-fluid px-0">
-  <!-- Hero Section -->
-  <div class="hero-section" style="background-color: #080808;">
-    <div class="container py-5 text-center text-white">
-      <h1 class="display-4 mb-4">Welcome to Local Council Of Birmingham</h1>
-      <p class="lead">Empowering Our Community Through Essential Services</p>
-    </div>
-  </div>
-  <div class="search-container">
-    <input type="text" id="searchInput" class="search-input form-control form-control-lg" onkeyup="searchServices()" placeholder="Search for services...">
-  </div>
+<style>
+  /* Define gradient styles for each service card */
+  .service-card-financial {
+    background: linear-gradient(45deg, #A9F1DF, #FFBBBB);
+  }
+  
+  .service-card-childcare {
+    background: linear-gradient(to right, #D8B5FF, #1EAE98);
+  }
+  
+  .service-card-locality-tax {
+    background: linear-gradient(to right, #BFF098, #6FD6FF);
+  }
+  
+  .service-card-pension {
+    background: linear-gradient(to right, #C6EA8D, #FE90AF);
+  }
+  
+  .service-card-waste-management {
+    background: linear-gradient(to right, #F1EAB9, #FF8C8C);
+  }
+  
+  .service-card-health-subsidies {
+    background: linear-gradient(to right, #EA8D8D, #A890FE);
+  }
+  
+  /* Common style for all service cards */
+  .service-card {
+    border: none;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
 
-  <!-- Services Section -->
-  <div class="services-section py-5">
-    <div class="container">
-      <h2 class="text-center mb-5">Our Services</h2>
-      <div class="row">
+  /* Ensure footer sticks to the bottom */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  .footer {
+    flex-shrink: 0;
+  }
+</style>
+
+<div class="wrapper">
+  <div class="container-fluid px-0">
+    <!-- Hero Section -->
+    <div class="hero-section" style="background-color: #f3ebeb;">
+      <div class="container py-5 text-center text-Black">
+        <h1 class="display-4 mb-4">Welcome to Local Council Of Birmingham</h1>
+        <p class="lead">Empowering Our Community Through Essential Services</p>
+      </div>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input form-control form-control-lg" onkeyup="searchServices()" placeholder="Search ">
+    </div>
+    <div class="container py-3">
+      <img src="https://altoday.com/wp-content/uploads/2016/06/Birmingham-Alabama.jpg" alt="Birmingham" class="img-fluid">
+    </div>
+
+   
+    <div class="container-fluid px-0">
+      <!-- Services Section -->
+      <div class="services-section py-5 d-flex justify-content-center">
         <!-- Financial Assistance -->
-        <div class="col-md-6 mb-4">
+        <div class="service-card service-card-financial">
           <a href="{% url 'financial_assisstance' %}" class="text-decoration-none">
-            <div class="service-card bg-primary text-white p-4 rounded text-center h-100">
-              <i class="fas fa-money-bill-wave service-icon"></i>
-              <h3 class="mt-3">Financial Assistance</h3>
-              <p>Explore various financial support programs tailored to meet your individual needs.</p>
-            </div>
+            <i class="fas fa-money-bill-wave service-icon"></i>
+            <h3 class="mt-3">Financial Assistance</h3>
+            <p>Explore various financial support programs tailored to meet your individual needs.</p>
           </a>
         </div>
         <!-- Childcare Services -->
-        <div class="col-md-6 mb-4">
+        <div class="service-card service-card-childcare">
           <a href="{% url 'childcare_support' %}" class="text-decoration-none">
-            <div class="service-card bg-secondary text-white p-4 rounded text-center h-100">
-              <i class="fas fa-child service-icon"></i>
-              <h3 class="mt-3">Childcare Services</h3>
-              <p>Find resources and support services for childcare options in our community.</p>
-            </div>
+            <i class="fas fa-child service-icon"></i>
+            <h3 class="mt-3">Childcare Services</h3>
+            <p>Find resources and support services for childcare options in our community.</p>
           </a>
         </div>
         <!-- Locality Tax Assistance -->
-        <div class="col-md-6 mb-4">
+        <div class="service-card service-card-locality-tax">
           <a href="{% url 'localitytaxinfo' %}" class="text-decoration-none">
-            <div class="service-card bg-info text-white p-4 rounded text-center h-100">
-              <i class="fas fa-building service-icon"></i>
-              <h3 class="mt-3">Locality Tax Assistance</h3>
-              <p>Get assistance and guidance for understanding and managing your locality tax obligations.</p>
-            </div>
+            <i class="fas fa-building service-icon"></i>
+            <h3 class="mt-3">Locality Tax Assistance</h3>
+            <p>Get assistance and guidance for understanding and managing your locality tax obligations.</p>
           </a>
         </div>
         <!-- Pension Planning -->
-        <div class="col-md-6 mb-4">
+        <div class="service-card service-card-pension">
           <a href="{% url 'pensionplanninginfo' %}" class="text-decoration-none">
-            <div class="service-card bg-warning text-dark p-4 rounded text-center h-100">
-              <i class="fas fa-clipboard-check service-icon"></i>
-              <h3 class="mt-3">Pension Planning</h3>
-              <p>Learn about pension planning and eligibility with our support services.</p>
-            </div>
+            <i class="fas fa-clipboard-check service-icon"></i>
+            <h3 class="mt-3">Pension Planning</h3>
+            <p>Learn about pension planning and eligibility with our support services.</p>
           </a>
         </div>
         <!-- Waste Management -->
-        <div class="col-md-6 mb-4">
+        <div class="service-card service-card-waste-management">
           <a href="{% url 'wastemanagementinfo' %}" class="text-decoration-none">
-            <div class="service-card bg-danger text-white p-4 rounded text-center h-100">
-              <i class="fas fa-trash service-icon"></i>
-              <h3 class="mt-3">Waste Management</h3>
-              <p>Discover waste management solutions and recycling programs in our community.</p>
-            </div>
+            <i class="fas fa-trash service-icon"></i>
+            <h3 class="mt-3">Waste Management</h3>
+            <p>Discover waste management solutions and recycling programs in our community.</p>
           </a>
         </div>
         <!-- Health Subsidies -->
-        <div class="col-md-6 mb-4">
+        <div class="service-card service-card-health-subsidies">
           <a href="{% url 'healthsubsidieinfo' %}" class="text-decoration-none">
-            <div class="service-card bg-success text-white p-4 rounded text-center h-100">
-              <i class="fas fa-heart service-icon"></i>
-              <h3 class="mt-3">Health Subsidies</h3>
-              <p>Access subsidies and healthcare assistance for individuals and families in need.</p>
-            </div>
+            <i class="fas fa-heart service-icon"></i>
+            <h3 class="mt-3">Health Subsidies</h3>
+            <p>Access subsidies and healthcare assistance for individuals and families in need.</p>
           </a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<footer class="footer-section bg-dark text-white py-4">
+
+<footer class="footer-section bg-light text-black py-4">
   <div class="container text-center">
     <div class="row">
       <div class="col-md-4 mb-4">
         <h4>About Us</h4>
-        <a href="{% url 'about' %}" class="text-white">Read More</a>
+        <a href="{% url 'about' %}" class="text-black">Read More</a>
       </div>
       <div class="col-md-4 mb-4">
         <h4>Contact Us</h4>
-        <a href="{% url 'contact' %}" class="text-white">Contact Now</a>
+        <a href="{% url 'contact' %}" class="text-black">Contact Now</a>
       </div>
       <div class="col-md-4 mb-4">
         <h4>Milestones</h4>
-        <a href="{% url 'info' %}" class="text-white">View Milestones</a>
+        <a href="{% url 'info' %}" class="text-black">View Milestones</a>
       </div>
     </div>
   </div>
 </footer>
+
 <script>
   function searchServices() {
     // Get the search input value
     var input = document.getElementById("searchInput");
     var filter = input.value.toUpperCase();
-
+ 
     // Get all service cards
     var cards = document.querySelectorAll('.service-card');
-
+ 
     // Loop through each service card
     cards.forEach(function(card) {
       // Get the service name
       var serviceName = card.querySelector('h3').textContent.toUpperCase();
-
+ 
       // Check if the service name contains the search input value
       if (serviceName.indexOf(filter) > -1) {
         // If found, display the card

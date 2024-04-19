@@ -14,7 +14,7 @@ Council Services
 
 <style>
 
-  /* Add your CSS styles here */
+  
 
   .chart-container {
 
@@ -24,7 +24,7 @@ Council Services
 
     margin: auto;
 
-    margin-bottom: 20px; /* Add margin at the bottom of the chart */
+    margin-bottom: 20px; 
 
   }
 
@@ -32,9 +32,9 @@ Council Services
 
   .chart-data {
 
-    color: #020202; /* Set text color to black */
+    color: #020202; 
 
-    margin-bottom: 20px; /* Add margin at the bottom of paragraphs */
+    margin-bottom: 20px; 
 
   }
 
@@ -44,7 +44,7 @@ Council Services
 
   .chart {
 
-    border: 1px solid #1b181b; /* Add a light gray border for the chart */
+    border: 1px solid #1b181b; 
 
   }
 
@@ -58,15 +58,15 @@ Council Services
 
 
 
-  /* Ensure scrollability */
+  
 
   #main-content {
 
     overflow-y: auto;
 
-    max-height: 70vh; /* Limit max height to allow scrolling */
+    max-height: 70vh; 
 
-    padding: 20px; /* Add padding for content */
+    padding: 20px; 
 
   }
 
@@ -184,11 +184,11 @@ Council Services
 
 <script>
 
-// Data for health subsidies chart
+
 
 const healthYears = ['2020', '2021', '2022'];
 
-const healthSubsidiesProvided = [200000, 400000, 450000]; // Number of subsidies provided each year
+const healthSubsidiesProvided = [200000, 400000, 450000]; 
 
 
 
@@ -196,16 +196,14 @@ const healthSubsidiesProvided = [200000, 400000, 450000]; // Number of subsidies
 
 const wasteLabels = ['2019', '2020', '2021', '2022'];
 
-const wasteEmployees = [30, 40, 50, 60]; // Number of waste management employees each year
-
+const wasteEmployees = [30, 40, 50, 60]; 
 
 
 // Data for financial support chart
 
 const financialYears = ['2020', '2021', '2022'];
 
-const financialSupportCount = [100000, 150000, 300000]; // Number of people helped each year
-
+const financialSupportCount = [100000, 150000, 300000]; 
 
 
 // Create health subsidies chart
@@ -228,15 +226,14 @@ var healthSubsidiesChart = new Chart(healthCtx, {
 
       backgroundColor: [
 
-        '#42a5a5', // Pink for 2020
+        '#42a5a5', 
 
-        '#93a542', // Purple for 2021
+        '#93a542', 
 
-        '#42a54f'  // Green for 2022
-
+        '#42a54f'  
       ],
 
-      borderColor: 'black', // Set border color to black
+      borderColor: 'black', 
 
       borderWidth: 1
 
@@ -266,7 +263,7 @@ var healthSubsidiesChart = new Chart(healthCtx, {
 
 
 
-// Create waste management chart
+
 
 var wasteCtx = document.getElementById('wasteManagementChart').getContext('2d');
 
@@ -286,17 +283,16 @@ var wasteManagementChart = new Chart(wasteCtx, {
 
       backgroundColor: [
 
-        '#ff9999', // Red for 2019
+        '#ff9999', 
+        '#ffb84d', 
 
-        '#ffb84d', // Orange for 2020
+        '#66cc99', 
 
-        '#66cc99', // Green for 2021
-
-        '#4d94ff'  // Blue for 2022
+        '#4d94ff'  
 
       ],
 
-      borderColor: 'black', // Set border color to black
+      borderColor: 'black', 
 
       borderWidth: 1
 
@@ -326,7 +322,7 @@ var wasteManagementChart = new Chart(wasteCtx, {
 
 
 
-// Create financial support chart
+
 
 var financialCtx = document.getElementById('financialSupportChart').getContext('2d');
 
@@ -346,15 +342,15 @@ var financialSupportChart = new Chart(financialCtx, {
 
       backgroundColor: [
 
-        '#ff9999', // Red for 2020
+        '#ff9999', 
 
-        '#ffb84d', // Orange for 2021
+        '#ffb84d', 
 
-        '#66cc99'  // Green for 2022
+        '#66cc99'  
 
       ],
 
-      borderColor: 'black', // Set border color to black
+      borderColor: 'black', 
 
       borderWidth: 1
 
@@ -384,11 +380,11 @@ var financialSupportChart = new Chart(financialCtx, {
 
 
 
-  // Data for temporary financial support chart
+  
 
   const temporarySupportYears = ['2020', '2021', '2022'];
 
-  const temporarySupportAmounts = [50000, 75000, 100000]; // Amount of temporary support provided each year
+  const temporarySupportAmounts = [50000, 75000, 100000]; 
 
 
 
