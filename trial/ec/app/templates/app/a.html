@@ -40,7 +40,7 @@ Council Services
 
 
 
-  /* Chart styling */
+  
 
   .chart {
 
@@ -192,21 +192,21 @@ const healthSubsidiesProvided = [200000, 400000, 450000];
 
 
 
-// Data for waste management chart
+
 
 const wasteLabels = ['2019', '2020', '2021', '2022'];
 
 const wasteEmployees = [30, 40, 50, 60]; 
 
 
-// Data for financial support chart
+
 
 const financialYears = ['2020', '2021', '2022'];
 
 const financialSupportCount = [100000, 150000, 300000]; 
 
 
-// Create health subsidies chart
+
 
 var healthCtx = document.getElementById('healthSubsidiesChart').getContext('2d');
 
@@ -388,7 +388,7 @@ var financialSupportChart = new Chart(financialCtx, {
 
 
 
-  // Create temporary financial support chart
+  
 
   var temporarySupportCtx = document.getElementById('temporaryFinancialSupportChart').getContext('2d');
 
@@ -406,9 +406,9 @@ var financialSupportChart = new Chart(financialCtx, {
 
         data: temporarySupportAmounts,
 
-        backgroundColor: 'rgba(75, 192, 192, 0.2)', // Light blue background color
+        backgroundColor: 'rgba(75, 192, 192, 0.2)', 
 
-        borderColor: 'rgba(75, 192, 192, 1)', // Dark blue border color
+        borderColor: 'rgba(75, 192, 192, 1)', 
 
         borderWidth: 1
 
