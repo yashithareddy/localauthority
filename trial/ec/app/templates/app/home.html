@@ -1,35 +1,35 @@
 {% extends 'app/base.html' %}
 {% load static %}
- 
+
 {% block title %}Home{% endblock title %}
- 
+
 {% block information %}
 <style>
   /* Define gradient styles for each service card */
   .service-card-financial {
-    background: linear-gradient(45deg, rgba(169, 241, 223, 0.8), rgba(255, 187, 187, 0.8));
+    background: linear-gradient(to right, #D3D3D3,  #D3D3D3);
   }
-  
+ 
   .service-card-childcare {
-    background: linear-gradient(to right, rgba(216, 181, 255, 0.8), rgba(30, 174, 152, 0.8));
+    background: linear-gradient(to right, #D3D3D3,  #D3D3D3);
   }
-  
+ 
   .service-card-locality-tax {
-    background: linear-gradient(to right, rgba(191, 240, 152, 0.8), rgba(111, 214, 255, 0.8));
+    background: linear-gradient(to right, #D3D3D3, #D3D3D3);
   }
-  
+ 
   .service-card-pension {
-    background: linear-gradient(to right, rgba(198, 234, 141, 0.8), rgba(254, 144, 175, 0.8));
+    background: linear-gradient(to right, #D3D3D3, #D3D3D3);
   }
-  
+ 
   .service-card-waste-management {
-    background: linear-gradient(to right, rgba(241, 234, 185, 0.8), rgba(255, 140, 140, 0.8));
+    background: linear-gradient(to right, #D3D3D3, #D3D3D3);
   }
-  
+ 
   .service-card-health-subsidies {
-    background: linear-gradient(to right, rgba(234, 141, 141, 0.8), rgba(168, 144, 254, 0.8));
+    background: linear-gradient(to right, #D3D3D3, #D3D3D3);
   }
-  
+ 
   /* Common style for all service cards */
   .service-card {
     border: none;
@@ -41,8 +41,14 @@
     border-radius: 10px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
+  .service-card:hover {
+    transform: translateY(-5px); /* Move the card up slightly on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect on hover */
+  }
+ 
   /* Ensure footer sticks to the bottom */
   html,
   body {
@@ -50,47 +56,47 @@
     margin: 0;
     padding: 0;
   }
-  
+ 
   .wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    font-family: 'Lora', serif; /* Apply Lora font to all text inside the wrapper */
   }
-  
+ 
   .content {
     flex: 1;
   }
-  
+ 
   .footer {
     flex-shrink: 0;
   }
+ 
+  .footer-section {
+    background-color: #ffeecc; /* Light gray background color */
+  }
 </style>
-
-<div class="wrapper">
+ 
+<div class="wrapper"> <!-- Apply Lora font to all text inside the wrapper -->
   <div class="container-fluid px-0">
     <!-- Hero Section -->
-    <div class="hero-section" style="background-color: #f3ebeb;">
-      <div class="container py-5 text-center text-Black">
+    <div class="hero-section" style="background-color:#ffeecc;">
+      <div class="container py-5 text-center text-black">
         <h1 class="display-4 mb-4">Welcome to Local Council Of Birmingham</h1>
         <p class="lead">Empowering Our Community Through Essential Services</p>
       </div>
     </div>
-    <!-- 
-<div class="search-container">
-      <input type="text" id="searchInput" class="search-input form-control form-control-lg" onkeyup="searchServices()" placeholder="Search ">
-</div>
--->
+ 
     <div class="container py-3">
-      <img src="https://altoday.com/wp-content/uploads/2016/06/Birmingham-Alabama.jpg" alt="Birmingham" class="img-fluid">
+      <img src="https://altoday.com/wp-content/uploads/2016/06/Birmingham-Alabama.jpg" alt="Birmingham" class="img-fluid" style="max-width: 100%; height: auto;">
     </div>
-
-   
+ 
     <div class="container-fluid px-0">
       <!-- Services Section -->
       <div class="services-section py-5 d-flex justify-content-center">
         <!-- Financial Assistance -->
         <div class="service-card service-card-financial">
-          <a href="{% url 'financial_assisstance' %}" class="text-decoration-none">
+          <a href="{% url 'financial_assisstance' %}" class="text-decoration-none text-black">
             <i class="fas fa-money-bill-wave service-icon"></i>
             <h3 class="mt-3">Financial Assistance</h3>
             <p>Explore various financial support programs tailored to meet your individual needs.</p>
@@ -98,7 +104,7 @@
         </div>
         <!-- Childcare Services -->
         <div class="service-card service-card-childcare">
-          <a href="{% url 'childcare_support' %}" class="text-decoration-none">
+          <a href="{% url 'childcare_support' %}" class="text-decoration-none text-black">
             <i class="fas fa-child service-icon"></i>
             <h3 class="mt-3">Childcare Services</h3>
             <p>Find resources and support services for childcare options in our community.</p>
@@ -106,15 +112,15 @@
         </div>
         <!-- Locality Tax Assistance -->
         <div class="service-card service-card-locality-tax">
-          <a href="{% url 'localitytaxinfo' %}" class="text-decoration-none">
+          <a href="{% url 'localitytaxinfo' %}" class="text-decoration-none text-black">
             <i class="fas fa-building service-icon"></i>
-            <h3 class="mt-3">Locality Tax Assistance</h3>
+            <h3 class="mt-3">Locality Tax </h3>
             <p>Get assistance and guidance for understanding and managing your locality tax obligations.</p>
           </a>
         </div>
         <!-- Pension Planning -->
         <div class="service-card service-card-pension">
-          <a href="{% url 'pensionplanninginfo' %}" class="text-decoration-none">
+          <a href="{% url 'pensionplanninginfo' %}" class="text-decoration-none text-black">
             <i class="fas fa-clipboard-check service-icon"></i>
             <h3 class="mt-3">Pension Planning</h3>
             <p>Learn about pension planning and eligibility with our support services.</p>
@@ -122,7 +128,7 @@
         </div>
         <!-- Waste Management -->
         <div class="service-card service-card-waste-management">
-          <a href="{% url 'wastemanagementinfo' %}" class="text-decoration-none">
+          <a href="{% url 'wastemanagementinfo' %}" class="text-decoration-none text-black">
             <i class="fas fa-trash service-icon"></i>
             <h3 class="mt-3">Waste Management</h3>
             <p>Discover waste management solutions and recycling programs in our community.</p>
@@ -130,7 +136,7 @@
         </div>
         <!-- Health Subsidies -->
         <div class="service-card service-card-health-subsidies">
-          <a href="{% url 'healthsubsidieinfo' %}" class="text-decoration-none">
+          <a href="{% url 'healthsubsidieinfo' %}" class="text-decoration-none text-black">
             <i class="fas fa-heart service-icon"></i>
             <h3 class="mt-3">Health Subsidies</h3>
             <p>Access subsidies and healthcare assistance for individuals and families in need.</p>
@@ -140,8 +146,8 @@
     </div>
   </div>
 </div>
-
-<footer class="footer-section bg-light text-black py-4">
+ 
+<footer class="footer-section  text-black py-4">
   <div class="container text-center">
     <div class="row">
       <div class="col-md-4 mb-4">
@@ -165,15 +171,15 @@
     // Get the search input value
     var input = document.getElementById("searchInput");
     var filter = input.value.toUpperCase();
- 
+
     // Get all service cards
     var cards = document.querySelectorAll('.service-card');
- 
+
     // Loop through each service card
     cards.forEach(function(card) {
       // Get the service name
       var serviceName = card.querySelector('h3').textContent.toUpperCase();
- 
+
       // Check if the service name contains the search input value
       if (serviceName.indexOf(filter) > -1) {
         // If found, display the card

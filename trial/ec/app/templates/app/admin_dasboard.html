@@ -81,6 +81,34 @@
             max-width: 400px;
             box-sizing: border-box;
         }
+        .news-section {
+    display: none; /* Initially hidden */
+}
+
+.news-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.news-section th,
+.news-section td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.news-section th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+.news-section td {
+    color: #666;
+}
+
+.news-section .alert-warning {
+    margin-top: 20px;
+}
     </style>
 </head>
 <body>
@@ -346,6 +374,44 @@
         {% endfor %}
     </ul>
 </div>
+<div class="container">
+<form action=""method="POST">
+    {%csrf_token%}
+    <h2>Update latest news</h2>
+    {{form.as_p}}
+    <input type="submit" class="btn btn-success" value="Add">
+</form>
+</div>
+
+<div class="container">
+    <div class="col-sm-8">
+        <h2 class="toggle-button" onclick="toggleNews()">Check the updated news (Click to View)</h2>
+        <div class="news-section" id="news-section">
+            {% if stu %}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for st in stu %}
+                            <tr>
+                                <td>{{ st.id }}</td>
+                                <td>{{ st.title }}</td>
+                                <td>{{ st.content }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4 class="text-center alert alert-warning">No Records</h4>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 <script>
     function toggleSubsidies() {
@@ -405,6 +471,14 @@
             pensionSupportList.style.display = "none";
         }
     }
+    function toggleNews() {
+    var newsSection = document.getElementById("news-section");
+    if (newsSection.style.display === "none") {
+        newsSection.style.display = "block";
+    } else {
+        newsSection.style.display = "none";
+    }
+}
 
 </script>
 <script>

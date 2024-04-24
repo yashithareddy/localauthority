@@ -34,6 +34,18 @@
             color: #495057; /* Text color */
             border-color: #ced4da; /* Border color */
         }
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #2b29b4; /* Change text color on hover */
+            background-color: rgba(114, 109, 114, 0.2); /* Change background color on hover */
+            border-radius: 5px; /* Add border radius for a rounded look */
+            transition: all 0.3s ease; /* Add transition for smooth animation */
+        }
+        .navbar-brand[href="{% url 'about' %}"]:hover {
+        color: #2b29b4; /* Change text color on hover */
+        background-color: rgba(114, 109, 114, 0.2); /* Change background color on hover */
+        border-radius: 5px; /* Add border radius for a rounded look */
+        transition: all 0.3s ease; /* Add transition for smooth animation */
+    }
     </style>
 <head>
     <meta charset="UTF-8">
@@ -45,7 +57,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-pink">
+    <nav class="navbar navbar-expand-md navbar-light bg-pink" style="font-family: 'Lora', serif;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="max-height: 100px;">
@@ -71,11 +83,11 @@
         </div>
     </nav>
 
-    <div class="intro-section">
+    <div class="intro-section" style="font-family: 'Lora', serif;">
         <div class="row align-items-center">
             <div class="col-md-12">
                 <h2 class="text-center">Welcome to Birmingham City Council</h2>
-                <p class="text-center">The Birmingham City Council, your local government body, is here to serve the community and make Birmingham a great place to live. We understand the importance of resident well-being and quality of life, which is why we offer a wide range of services to support you. Whether you need help with essential services like bin collection and road maintenance, or you're looking for information on schools, housing, or benefits, the Council is here to assist you. We're also dedicated to keeping Birmingham a clean, safe, and vibrant city, so you'll find resources for reporting issues, parks and leisure facilities, and initiatives to support the community. Our website allows you to easily access all these services and find the information you need, but you can also reach out to us directly for help. We're committed to working together to build a better Birmingham for everyone.</p>
+                <p class="text-center">The Birmingham City Council, your local government body, is here to serve the community and make Birmingham a great place to live. We understand the importance of resident well-being and quality of life, which is why we offer a wide range of services to support you. Whether you need help with essential services like waste collection and financial support, or you're looking for pension , childcaresupport, or benefits, the Council is here to assist you. We're also dedicated to keeping Birmingham a clean, safe, and vibrant city, so you'll find resources for reporting issues, parks and leisure facilities, and initiatives to support the community. Our website allows you to easily access all these services and find the information you need, but you can also reach out to us directly for help. We're committed to working together to build a better Birmingham for everyone.</p>
                 <div class="text-center">
                     <a href="{% url 'about' %}" class="text-primary">Learn More</a>
                 </div>
@@ -85,14 +97,14 @@
      
     
     <!-- Page content -->
-    <main class="container py-5">
+    <main class="container py-5" style="font-family: 'Lora', serif;">
         <div class="row">
             <!-- Service cards -->
             <div class="col-md-4">
                 
-                <div class="card mb-3" style="background-color: #c4c9ce">
+                <div class="card mb-3" style="background-color: #c4c9ce" >
                     <div class="card-body">
-                        <h5 class="card-title">Health Subsidary</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Health Subsidary</h5>
                         <p class="card-text">Apply now to explore the full spectrum of health services available at your fingertips.</p>
                         <a href="{% url 'health_subsidary_apply' %}" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -101,7 +113,7 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Locality Tax</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Locality Tax</h5>
                         <p class="card-text">Apply now to unlock the full potential of our platform and stay on top of your tax obligations.</p>
                         <a href="{% url 'locality_tax_apply' %}" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -110,7 +122,7 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Waste Management Services</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Waste Management Services</h5>
                         <p class="card-text">Apply now to access waste collection schedules, recycling guidelines, and report issues related to waste management.</p>
                         <a href="{% url 'waste_management_apply' %}" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -121,8 +133,8 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Financial Support - Temporary Inability to Work</h5>
-                        <p class="card-text">Apply now for financial support if you're temporarily unable to work due to illness, injury, or other incapacitating circumstances.</p>
+                        <h5 class="card-title" style="font-weight: bold;">Financial Support - Temporary</h5>
+                        <p class="card-text">Apply now for financial support if you're temporarily unable to work due to illness, injury.</p>
                         <a href="{% url 'savetemporarysupport' %}" class="btn btn-primary">Apply Now</a>
                     </div>
                 </div>
@@ -132,7 +144,7 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Financial Support - Low Income Citizens</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Financial Support - Low Income Citizens</h5>
                         <p class="card-text">Apply now for financial support if you're on low income and need assistance.</p>
                         <a href="{% url 'low_income_support_apply' %}" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -143,7 +155,7 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Report a Crime</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Report a Crime</h5>
                         <p class="card-text">Help keep our community safe by reporting crimes. Your contribution matters.</p>
                         <a href="{% url 'reportingcrimes' %}" class="btn btn-primary">Report Now</a>
                     </div>
@@ -154,7 +166,7 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Pension apply</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Pension apply</h5>
                         <p class="card-text">Help our community old age citizens with financial support</p>
                         <a href="{% url 'save_pension_support' %}" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -165,7 +177,7 @@
             <div class="col-md-4">
                 <div class="card mb-3" style="background-color: #c4c9ce;">
                     <div class="card-body">
-                        <h5 class="card-title">Child Care Support</h5>
+                        <h5 class="card-title" style="font-weight: bold;">Child Care Support</h5>
                         <p class="card-text">Help our comminity with financial support for children</p>
                         <a href="{% url 'save_child_support_application' %}" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -177,12 +189,12 @@
      <!-- Footer -->
 
 
-     <footer class="footer-section footer-light-brown py-4">
+     <footer class="footer-section footer-light-brown py-4"  style="font-family: 'Lora', serif;">
         <div class="container text-center">
           <div class="row">
             <div class="col-md-4 mb-4">
               <h4>Dashboard</h4>
-              <a href="{% url 'dashboard' %}" class="text-black">check you application status</a>
+              <a href="{% url 'dashboard' %}" class="text-black">check your application status</a>
             </div>
             <div class="col-md-4 mb-4">
               <h4>News</h4>

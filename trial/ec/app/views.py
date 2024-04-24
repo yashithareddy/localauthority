@@ -24,6 +24,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import login_required
 from django.db import models
 from .models import News
+from django import forms
 # Create your views here.
 from django.contrib.auth import authenticate, login
 
@@ -144,7 +145,7 @@ def savehealth(request):
         else:
             return HttpResponse("Address is required.")
     else:
-        return render(request, "health_subsidary_apply.html")
+        return render(request, "app/health_subsidary_apply.html")
 
 def success_page(request):
     return render(request, 'app/healthsuccess.html')
@@ -439,10 +440,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import HealthSubsidy, WasteManagementApplication, TemporarySupportApplication, LowIncomeSupportApplication, CrimeReport, LocalityTaxPayment, ChildCareSupport, PensionSupport
-
+from .forms import newsupdate
 @login_required(login_url='/admin/login/')
 @staff_member_required
 def admin_dashboard(request):
+    if request.method == 'POST':
+        fm = newsupdate(request.POST)
+        if fm.is_valid():
+            fm.save()
+            return redirect('admin_dashboard')  # Redirect to the admin dashboard page after successful update
+    else:
+        fm = newsupdate()
+        stud=News.objects.all()
+
+    # Retrieve data for other models as before
     health_subsidies = HealthSubsidy.objects.all()
     waste_applications = WasteManagementApplication.objects.all()
     temporary_support_applications = TemporarySupportApplication.objects.all()
@@ -451,11 +462,22 @@ def admin_dashboard(request):
     locality_tax_payments = LocalityTaxPayment.objects.all()
     child_care_support_applications = ChildCareSupport.objects.all()
     pension_support_applications = PensionSupport.objects.all()
-    
+    news_articles = News.objects.all()
+    stud=News.objects.all()  # Retrieve all news articles
 
-    # Repeat for other models...
-    return render(request, 'app/admin_dasboard.html', {'health_subsidies': health_subsidies, 'waste_applications': waste_applications , 'temporary_sipport_applications':temporary_support_applications,'low_income_support_applications':low_income_support_applications,'crime_reports':crime_reports, 'locality_tax_payments':locality_tax_payments,'child_care_support_applications':child_care_support_applications,'pension_support_applications': pension_support_applications,})
-
+    return render(request, 'app/admin_dasboard.html', {
+        'health_subsidies': health_subsidies,
+        'waste_applications': waste_applications,
+        'temporary_support_applications': temporary_support_applications,
+        'low_income_support_applications': low_income_support_applications,
+        'crime_reports': crime_reports,
+        'locality_tax_payments': locality_tax_payments,
+        'child_care_support_applications': child_care_support_applications,
+        'pension_support_applications': pension_support_applications,
+        'news_articles': news_articles,  # Pass news articles to the template
+        'form': fm,  # Pass the form instance to the template
+        'stu':stud
+    })
 from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from .models import HealthSubsidy, WasteManagementApplication, TemporarySupportApplication, LowIncomeSupportApplication, CrimeReport, LocalityTaxPayment, ChildCareSupport, PensionSupport  # Import all application models

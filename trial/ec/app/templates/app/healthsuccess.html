@@ -15,4 +15,12 @@
         </div>
     </div>
 </div>
+
+<!-- JavaScript redirection script -->
+<script>
+    // Redirect to services page after 5 seconds (5000 milliseconds)
+    setTimeout(function() {
+        window.location.href = "{% url 'success' %}";
+    }, 5000);
+</script>
 {% endblock main-content %}

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import PasswordResetForm  # Import PasswordResetF
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.contrib.auth.forms import PasswordResetForm
 from .models import HealthSubsidy
-
+from .models import News
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'autofocus': 'True', 'class': 'form-control'}))
     password = forms.CharField(label="Password", strip=False, widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'}))
@@ -36,3 +36,10 @@ class HealthSubsidyForm(forms.ModelForm):
     class Meta:
         model = HealthSubsidy
         fields = '__all__'
+
+class newsupdate(forms.ModelForm):
+    class Meta:
+        model=News
+        fields=['title','content',]
+        widgets={'title':forms.TextInput(attrs={'class':'form-control'}),
+                 'content':forms.TextInput(attrs={'class':'form-control'})}

@@ -1,67 +1,90 @@
 {% load static %}
 
-{% block title %}{% endblock title %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="container">
-  <!-- Header Section -->
-  <div class="text-center mt-5 mb-4">
-    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
-    <h1 class="mt-4" style="text-align: center;">Health Subsidie Service</h1>
-    <p class="lead" style="text-align: center;"><strong>Ensuring Access to Affordable Healthcare</strong></p>
-    
-  </div>
-  <div class="container py-3 text-center">
-    <img src="https://daily.jstor.org/wp-content/uploads/2015/03/healthcare.jpg" alt="Birmingham" class="img-fluid" style="display: block; margin: 20px auto; max-width: 500px;">
-</div>
-  
-  <!-- Health Subsidies Information -->
-  <div class="card bg-light mb-5">
-    <div class="card-body">
-      <h2 class="card-title">Understanding Health Subsidies</h2>
-      <p class="card-text">Access to affordable healthcare is essential for the well-being of individuals and communities alike. Health subsidies play a crucial role in ensuring that everyone, regardless of their financial situation, can access necessary medical services and treatments. These subsidies help alleviate the financial burden on individuals and families, particularly those with low incomes or facing unexpected medical expenses. By providing financial assistance for health insurance premiums, medical care, prescription drugs, and preventive services, subsidies enable people to seek timely medical attention and manage chronic conditions effectively.Moreover, health subsidies contribute to reducing healthcare disparities and promoting equity in access to healthcare services. They ensure that vulnerable populations, such as children, seniors, and individuals with disabilities, receive the care they need to maintain good health and quality of life. Additionally, subsidies encourage preventive care and early intervention, which can lead to better health outcomes and lower healthcare costs in the long run.Furthermore, health subsidies stimulate economic growth and productivity by reducing the financial barriers to healthcare access. When individuals have access to affordable healthcare, they are more likely to stay healthy, remain productive members of the workforce, and contribute to the overall prosperity of society. By investing in health subsidies, governments and organizations demonstrate their commitment to public health and well-being, fostering a healthier and more resilient population.</p>
-      <h2 class="card-title">Benefits of Waste Management</h2>
-      <p class="card-text">Health subsidies offer a multitude of benefits that extend beyond individual healthcare access, positively impacting both individuals and society as a whole. Firstly, they serve as a crucial tool in ensuring universal access to essential healthcare services, regardless of socioeconomic status. By reducing the financial burden associated with medical care, subsidies enable individuals and families to seek necessary treatment without facing significant financial strain. This not only improves health outcomes but also prevents individuals from foregoing essential care due to cost concerns, ultimately leading to a healthier population.Moreover, health subsidies contribute to the prevention and management of chronic diseases by promoting regular check-ups, screenings, and preventive care measures. By incentivizing early intervention and disease management programs, subsidies help detect health issues at their nascent stages, thereby reducing the prevalence of severe illnesses and complications. Additionally, these subsidies encourage healthier lifestyle choices and behavior modifications, as individuals are more likely to prioritize their health when healthcare services are readily accessible and affordable.Furthermore, health subsidies have broader societal benefits, including reduced healthcare expenditures and improved productivity. By ensuring that individuals receive timely and appropriate care, subsidies mitigate the need for costly emergency interventions and hospitalizations, thereby lowering overall healthcare costs. Additionally, a healthier population is more productive, contributing positively to economic growth and stability. Moreover, by addressing health disparities and promoting equitable access to healthcare, subsidies foster social cohesion and inclusivity within communities.</p>
-      <h2 class="card-title">Challenges faced by the council</h2>
-      <p class="card-text">As the head of the council, overseeing the provision of health subsidies entails navigating numerous challenges that impact the effectiveness and sustainability of these programs. Firstly, budget constraints present a formidable hurdle. Balancing the allocation of limited financial resources between various public services while ensuring adequate funding for health subsidies requires careful prioritization and strategic decision-making. The challenge lies in finding innovative ways to maximize the impact of available funds while meeting the growing demand for healthcare assistance.Equitable distribution of health subsidies poses another significant challenge. Ensuring that subsidies reach those who need them most, particularly marginalized and underserved populations, demands proactive outreach efforts and targeted interventions. Overcoming geographical barriers, language barriers, and cultural considerations is essential to reach communities with limited access to healthcare services and address disparities in health outcomes effectively.Administrative complexity is also a pressing challenge. Designing and managing subsidy programs involve establishing clear eligibility criteria, streamlining application processes, and implementing robust monitoring and evaluation mechanisms. The administrative burden of verifying eligibility, processing applications, and preventing fraud requires efficient resource management and investment in staff training and technological infrastructure.</p>
-      
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Subsidie Service</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Body */
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        .header-img {
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        /* Cards */
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header Section -->
+        <div class="text-center mt-5 mb-4">
+            <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" class="header-img">
+            <h1 class="mt-4">Health Subsidie Service</h1>
+            <p class="lead"><strong>Ensuring Access to Affordable Healthcare</strong></p>
+        </div>
+
+        <!-- Health Subsidies Information -->
+        <div class="card bg-light">
+            <div class="card-body">
+                <h2 class="card-title">Understanding Health Subsidies</h2>
+                <p class="card-text">Access to affordable healthcare is essential for the well-being of individuals and communities alike. Health subsidies play a crucial role in ensuring that everyone, regardless of their financial situation, can access necessary medical services and treatments. These subsidies help alleviate the financial burden on individuals and families, particularly those with low incomes or facing unexpected medical expenses. By providing financial assistance for health insurance premiums, medical care, prescription drugs, and preventive services, subsidies enable people to seek timely medical attention and manage chronic conditions effectively.Moreover, health subsidies contribute to reducing healthcare disparities and promoting equity in access to healthcare services. They ensure that vulnerable populations, such as children, seniors, and individuals with disabilities, receive the care they need to maintain good health and quality of life. Additionally, subsidies encourage preventive care and early intervention, which can lead to better health outcomes and lower healthcare costs in the long run.Furthermore, health subsidies stimulate economic growth and productivity by reducing the financial barriers to healthcare access. When individuals have access to affordable healthcare, they are more likely to stay healthy, remain productive members of the workforce, and contribute to the overall prosperity of society. By investing in health subsidies, governments and organizations demonstrate their commitment to public health and well-being, fostering a healthier and more resilient population.</p>
+            </div>
+        </div>
+
+        <!-- Benefits of Health Subsidies -->
+        <div class="card bg-light">
+            <div class="card-body">
+                <h2 class="card-title">Benefits of Health Subsidies</h2>
+                <p class="card-text">Health subsidies offer a multitude of benefits that extend beyond individual healthcare access, positively impacting both individuals and society as a whole. Firstly, they serve as a crucial tool in ensuring universal access to essential healthcare services, regardless of socioeconomic status. By reducing the financial burden associated with medical care, subsidies enable individuals and families to seek necessary treatment without facing significant financial strain. This not only improves health outcomes but also prevents individuals from foregoing essential care due to cost concerns, ultimately leading to a healthier population.Moreover, health subsidies contribute to the prevention and management of chronic diseases by promoting regular check-ups, screenings, and preventive care measures. By incentivizing early intervention and disease management programs, subsidies help detect health issues at their nascent stages, thereby reducing the prevalence of severe illnesses and complications. Additionally, these subsidies encourage healthier lifestyle choices and behavior modifications, as individuals are more likely to prioritize their health when healthcare services are readily accessible and affordable.Furthermore, health subsidies have broader societal benefits, including reduced healthcare expenditures and improved productivity. By ensuring that individuals receive timely and appropriate care, subsidies mitigate the need for costly emergency interventions and hospitalizations, thereby lowering overall healthcare costs. Additionally, a healthier population is more productive, contributing positively to economic growth and stability. Moreover, by addressing health disparities and promoting equitable access to healthcare, subsidies foster social cohesion and inclusivity within communities.</p>
+            </div>
+        </div>
+
+        <!-- Challenges of Health Subsidies -->
+        
+
+        <!-- If interested, login and apply section -->
+        <div class="text-center">
+          <p><strong><a href="{% url 'login' %}?next={% url 'savehealth' %}" class="btn btn-primary">Apply Now</a></strong></p>
+          </div>
     </div>
-  </div>
-</div>
 
-<div class="text-center">
-  <p><strong><a href="{%url 'login'%}">login</a></strong> </p>
-</div>
-</div>
+    <!-- External JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- CSS Styling -->
-<style>
-  /* Body */
-  body {
-    background-color: #f8f9fa;
-    color: #333;
-  }
+</body>
 
-  /* Header */
-  .text-center img {
-    margin-bottom: 20px;
-  }
-
-  /* Cards */
-  .card {
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-
-  .card-text {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-</style>
-{% endblock content %}
+</html>

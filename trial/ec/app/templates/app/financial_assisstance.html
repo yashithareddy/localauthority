@@ -1,66 +1,106 @@
 {% load static %}
 
-{% block title %}{% endblock title %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="container">
-  <!-- Header Section -->
-  <div class="text-center mt-5 mb-4">
-   
-    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
-    <h1 class="mt-4" style="text-align: center;">Financial Assistance</h1>
-    <p class="lead" style="text-align: center;"><strong>Empowering Our Community</strong></p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Assistance</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Body */
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        .header-img {
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        /* Cards */
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header Section -->
+        <div class="text-center mt-5 mb-4">
+            <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" class="header-img">
+            <h1 class="mt-4">Financial Assistance</h1>
+            <p class="lead"><strong>Empowering Our Community</strong></p>
+        </div>
+
+        <!-- Financial Assistance Information -->
+        <div class="card bg-light">
+            <div class="card-body">
+                <h2 class="card-title">Understanding Financial Assistance</h2>
+                <p class="card-text">Financial assistance is a support mechanism provided to individuals or families facing economic hardship or financial challenges. It aims to alleviate financial burdens and promote economic stability by offering temporary relief or ongoing support. Financial assistance can take various forms, including cash grants, vouchers, subsidies, or services aimed at meeting basic needs such as housing, food, healthcare, utilities, or education. Temporary financial assistance is typically provided to address short-term crises or emergencies, such as job loss, illness, or natural disasters, while assistance for low-income individuals or families offers ongoing support to help them meet their essential needs and improve their financial situation over time.</p>
+            </div>
+        </div>
+
+        <!-- Benefits of Financial Assistance -->
+        <div class="card bg-light">
+            <div class="card-body">
+                <h2 class="card-title">Benefits of Financial Assistance</h2>
+                <p class="card-text">Financial assistance provides crucial support to individuals and families facing economic hardship, offering a safety net to help them meet their basic needs and maintain a decent standard of living. By providing temporary relief during times of crisis, financial assistance helps prevent homelessness, hunger, and other adverse consequences of poverty, promoting stability and well-being. Assistance for low-income individuals or families supports long-term economic security and mobility by helping them access essential services, such as healthcare and education, and pursue opportunities for employment and self-sufficiency. Moreover, financial assistance programs contribute to social inclusion and equity by addressing disparities in access to resources and opportunities, fostering a more just and equitable society.</p>
+            </div>
+        </div>
+
+        <!-- Challenges of Financial Assistance -->
+        
+
+        <!-- If interested, login and apply section -->
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+              <div class="text-center">
+                  <p><strong><a href="{% url 'login' %}?next={% url 'savetemporarysupport' %}" class="btn btn-primary">Apply For temporay support</a></strong></p>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="text-center">
+                  <p><strong><a href="{% url 'login' %}?next={% url 'low_income_support_apply' %}" class="btn btn-primary">Apply If you have low income</a></strong></p>
+              </div>
+              
+          </div>
+          
+      </div>
+
+      <!-- Contact Us -->
+      
+
   </div>
-  <div class="container py-3 text-center">
-    <img src="https://th.bing.com/th/id/R.49b187a795ce14d99dd7f8636a847a6a?rik=tKuNi0QQBMNPXA&riu=http%3a%2f%2fwww.cqwen.com%2fwp-content%2fuploads%2f2015%2f01%2ffinancial-assistance-grants1.jpg&ehk=%2fRKGlH9pl6COPYQnyNHIZRdaBgMtnupl7eOjISssbzc%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="Birmingham" class="img-fluid" style="display: block; margin: 20px auto; max-width: 500px;">
-</div>
 
 
+    <!-- External JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  
-  <div class="card bg-light mb-5">
-    <div class="card-body">
-      <h2 class="card-title">Understanding Financial Assistance</h2>
-      <p class="card-text">Financial assistance is a support mechanism provided to individuals or families facing economic hardship or financial challenges. It aims to alleviate financial burdens and promote economic stability by offering temporary relief or ongoing support. Financial assistance can take various forms, including cash grants, vouchers, subsidies, or services aimed at meeting basic needs such as housing, food, healthcare, utilities, or education. Temporary financial assistance is typically provided to address short-term crises or emergencies, such as job loss, illness, or natural disasters, while assistance for low income individuals or families offers ongoing support to help them meet their essential needs and improve their financial situation over time.</p>
-      <h2 class="card-title">Benefits of Financial Assistance</h2>
-      <p class="card-text">Financial assistance provides crucial support to individuals and families facing economic hardship, offering a safety net to help them meet their basic needs and maintain a decent standard of living. By providing temporary relief during times of crisis, financial assistance helps prevent homelessness, hunger, and other adverse consequences of poverty, promoting stability and well-being. Assistance for low income individuals or families supports long-term economic security and mobility by helping them access essential services, such as healthcare and education, and pursue opportunities for employment and self-sufficiency. Moreover, financial assistance programs contribute to social inclusion and equity by addressing disparities in access to resources and opportunities, fostering a more just and equitable society.</p>
-      <h2 class="card-title">Challenges of Financial Assistance</h2>
-      <p class="card-text">Despite its benefits, financial assistance programs face various challenges that can hinder their effectiveness in addressing poverty and promoting economic stability. Limited funding and resources pose a significant challenge, as demand for assistance often exceeds available resources, leading to eligibility criteria, waitlists, or insufficient support for eligible individuals or families. Additionally, administrative complexities, such as eligibility determinations, application processes, and program oversight, can create barriers to accessing assistance and contribute to bureaucratic inefficiencies. Moreover, stigma and misconceptions surrounding financial assistance programs can deter eligible individuals from seeking help, exacerbating their financial struggles and perpetuating cycles of poverty. Furthermore, ensuring accountability and transparency in the administration of financial assistance programs is essential to prevent fraud, abuse, or misuse of public funds and maintain public trust and confidence in the effectiveness and integrity of these programs.</p>
-      <p class="card-text"><strong></strong></p>
-    </div>
-  </div>
+</body>
 
-<div class="text-center">
-    <p><strong> <a href="{%url 'login'%}">login</a></strong> </p>
-  </div>
-<!-- CSS Styling -->
-<style>
-  /* Body */
-  body {
-    background-color: #f8f9fa;
-    color: #333;
-  }
-
-  /* Header */
-  .text-center img {
-    margin-bottom: 20px;
-  }
-
-  /* Cards */
-  .card {
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-
-  .card-text {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-</style>
-{% endblock content %}
+</html>
