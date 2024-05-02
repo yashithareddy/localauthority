@@ -1,11 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UsernameField, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import PasswordResetForm  # Import PasswordResetForm
+# Import PasswordResetForm
 from django.contrib.auth.forms import AuthenticationForm, UsernameField
-from django.contrib.auth.forms import PasswordResetForm
+
 from .models import HealthSubsidy
 from .models import News
+from .models import Event
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'autofocus': 'True', 'class': 'form-control'}))
     password = forms.CharField(label="Password", strip=False, widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'}))
@@ -25,12 +26,7 @@ class CustomerRegistrationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'residency_proof', 'length_of_residency']
 
-from django.contrib.auth.forms import PasswordResetForm
 
-class MyPasswordResetForm(PasswordResetForm):
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super().__init__(*args, **kwargs)
 
 class HealthSubsidyForm(forms.ModelForm):
     class Meta:
@@ -43,3 +39,14 @@ class newsupdate(forms.ModelForm):
         fields=['title','content',]
         widgets={'title':forms.TextInput(attrs={'class':'form-control'}),
                  'content':forms.TextInput(attrs={'class':'form-control'})}
+        
+class EventUpdate(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['name', 'description', 'date', 'time']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
+        }

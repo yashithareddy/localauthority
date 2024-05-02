@@ -3,7 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from .forms import LoginForm, MyPasswordResetForm  # Import MyPasswordResetForm here
+from .forms import LoginForm # Import MyPasswordResetForm here
 
 from .views import healthview
 
@@ -17,7 +17,7 @@ urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name='login'),
     path('success/', views.SuccessView.as_view(), name='success'),
     path('health_subsidary_apply/', views.health_subsidary_apply, name='health_subsidary_apply'),
-    path('password-reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', form_class=MyPasswordResetForm), name='password_reset'),
+    #path('password-reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', form_class=MyPasswordResetForm), name='password_reset'),
     path('locality_tax_apply/', views.locality_tax_apply, name='locality_tax_apply'),
     path('healthsuccess/', views.success_page, name='healthsuccess'), 
     path('healthsuccess/', healthview.as_view(), name='healthsuccess'),
@@ -49,6 +49,8 @@ urlpatterns = [
      path('pensionplanninginfo', views.pensionplanninginfo, name='pensionplanninginfo'),
      path('wastemanagementinfo', views.wastemanagementinfo, name='wastemanagementinfo'),
      path('healthsubsidieinfo', views.healthsubsidieinfo, name='healthsubsidieinfo'),
+     path('event_list', views.event_list, name='event_list'),
+    
 
 
 

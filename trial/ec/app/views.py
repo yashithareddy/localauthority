@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import HealthSubsidyForm
 
 from .models import HealthSubsidy  # Import the updated model name
-from django.contrib.auth.forms import PasswordResetForm
+#from django.contrib.auth.forms import PasswordResetForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from datetime import datetime
@@ -54,10 +54,10 @@ class CustomerRegistrationView(View):  # Update class name
             messages.warning(request, "Invalid input data")
         return render(request, 'app/customerregistration.html', {'form': form})
 
-class MyPasswordResetForm(PasswordResetForm):
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super().__init__(*args, **kwargs)
+#class MyPasswordResetForm(PasswordResetForm):
+    #def __init__(self, *args, **kwargs):
+        #self.user = kwargs.pop('user', None)
+        #super().__init__(*args, **kwargs)
 
 class SuccessView(View):
     def get(self, request):
@@ -441,17 +441,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import HealthSubsidy, WasteManagementApplication, TemporarySupportApplication, LowIncomeSupportApplication, CrimeReport, LocalityTaxPayment, ChildCareSupport, PensionSupport
 from .forms import newsupdate
+from .forms import EventUpdate
 @login_required(login_url='/admin/login/')
 @staff_member_required
 def admin_dashboard(request):
     if request.method == 'POST':
         fm = newsupdate(request.POST)
+        fms = EventUpdate(request.POST)
         if fm.is_valid():
             fm.save()
+            return redirect('admin_dashboard')
+        if fms.is_valid():
+            fms.save()
             return redirect('admin_dashboard')  # Redirect to the admin dashboard page after successful update
     else:
         fm = newsupdate()
-        stud=News.objects.all()
+        fms = EventUpdate()
 
     # Retrieve data for other models as before
     health_subsidies = HealthSubsidy.objects.all()
@@ -463,7 +468,8 @@ def admin_dashboard(request):
     child_care_support_applications = ChildCareSupport.objects.all()
     pension_support_applications = PensionSupport.objects.all()
     news_articles = News.objects.all()
-    stud=News.objects.all()  # Retrieve all news articles
+    stud = News.objects.all()
+    studs = Event.objects.all()  # Retrieve all events
 
     return render(request, 'app/admin_dasboard.html', {
         'health_subsidies': health_subsidies,
@@ -475,8 +481,10 @@ def admin_dashboard(request):
         'child_care_support_applications': child_care_support_applications,
         'pension_support_applications': pension_support_applications,
         'news_articles': news_articles,  # Pass news articles to the template
-        'form': fm,  # Pass the form instance to the template
-        'stu':stud
+        'form_news': fm,
+        'form_event': fms,  # Pass the form instance to the template
+        'stu': stud,
+        'studs': studs
     })
 from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.http import require_POST
@@ -578,3 +586,9 @@ def wastemanagementinfo(request):
 
 def healthsubsidieinfo(request):
     return render(request,'app/healthsubsidieinfo.html')
+
+from .models import Event
+
+def event_list(request):
+    events = Event.objects.all()
+    return render(request, 'app/events.html', {'events': events})

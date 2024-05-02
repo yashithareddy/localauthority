@@ -7,7 +7,7 @@
     <style>
         /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -112,7 +112,7 @@
     </style>
 </head>
 <body>
-    <img src="https://birminghamwatch.org/wp-content/uploads/2019/03/Birmingham-City-Council-new-logo.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
+    <img src="https://www.booknamechangead.com/images/city_logo/Hyderabad.png" alt="Council Logo" style="display: block; margin: 20px auto; max-width: 200px;">
     <h1>Welcome to Your Dashboard Admin </h1>
     <div class="search-container">
         <input type="text" id="searchInput" class="search-input" onkeyup="searchApplications()" placeholder="Search for applications...">
@@ -378,7 +378,7 @@
 <form action=""method="POST">
     {%csrf_token%}
     <h2>Update latest news</h2>
-    {{form.as_p}}
+    {{ form_news.as_p }}
     <input type="submit" class="btn btn-success" value="Add">
 </form>
 </div>
@@ -412,6 +412,50 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <h2>Update Event</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Update Event</h2>
+        {{ form_event.as_p }}  <!-- Using the variable for event update form -->
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+<div class="container">
+    <div class="col-sm-8">
+        <h2 class="toggle-button" onclick="toggleEvents()">Check the updated events (Click to View)</h2>
+        <div class="event-section" id="event-section">
+            {% if studs %}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in studs %}
+                            <tr>
+                                <td>{{ event.id }}</td>
+                                <td>{{ event.name }}</td>
+                                <td>{{ event.description }}</td>
+                                <td>{{ event.date }}</td>
+                                <td>{{ event.time }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4 class="text-center alert alert-warning">No Events</h4>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 
 <script>
     function toggleSubsidies() {

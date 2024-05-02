@@ -3,7 +3,7 @@ from .models import HealthSubsidy , WasteManagementApplication, TemporarySupport
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from .models import UserProfile
-from .models import News
+from .models import News,Event
 admin.site.register(HealthSubsidy)
 admin.site.register(WasteManagementApplication)
 admin.site.register(TemporarySupportApplication)
@@ -40,3 +40,4 @@ admin.site.register(UserProfile)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(News)
+admin.site.register(Event)

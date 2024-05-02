@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .event {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .event-info {
+            flex: 1;
+        }
+        .event-name {
+            font-size: 20px;
+            color: #333;
+        }
+        .event-date {
+            font-size: 14px;
+            color: #666;
+        }
+        .event-time {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <ul>
+            {% for event in events %}
+                <li class="event">
+                    <div class="event-info">
+                        <div class="event-name">{{ event.name }}</div>
+                        <div class="event-date">{{ event.date }}</div>
+                        <div class="event-time">{{ event.time }}</div>
+                    </div>
+                    <!-- You can add more details like description, location, etc. here -->
+                    <!-- For simplicity, I'm displaying just the name, date, and time -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

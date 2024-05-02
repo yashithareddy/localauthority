@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 class HealthSubsidy(models.Model):
@@ -34,6 +35,9 @@ class HealthSubsidy(models.Model):
 
     class Meta:
         verbose_name_plural = "Health Subsidies"
+    def clean(self):
+        if not self.applicant_name or not self.email or not self.address or not self.city or not self.state or not self.zip_code or not self.insurance_number or not self.policy_holder or not self.date_of_birth:
+            raise ValidationError('All fields are required.')
 
 class WasteManagementApplication(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -63,6 +67,9 @@ class WasteManagementApplication(models.Model):
 
     def __str__(self):
         return f"Waste Management Application by {self.applicant_name}"
+    def clean(self):
+        if not self.applicant_name or not self.email or not self.address or not self.city or not self.state or not self.zip_code or not self.waste_type or not self.collection_day:
+            raise ValidationError('All fields are required.')
     
 class TemporarySupportApplication(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -196,3 +203,13 @@ class News(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     publication_date = models.DateTimeField(auto_now_add=True)
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    date = models.DateField()
+    time = models.TimeField()
+
+    def __str__(self):
+        return self.name
