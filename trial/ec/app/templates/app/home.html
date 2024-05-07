@@ -164,7 +164,22 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+  .services-section {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+  }
+
+  .service-card {
+    width: 90%; /* Adjust width for smaller screens */
+    margin: 10px 0; /* Add some vertical margin between cards */
+  }
+}
+
 </style>
+
+
 
 
 

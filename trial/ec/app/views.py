@@ -5,8 +5,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import HealthSubsidyForm
 
-from .models import HealthSubsidy  # Import the updated model name
-#from django.contrib.auth.forms import PasswordResetForm
+from .models import HealthSubsidy  
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from datetime import datetime
@@ -54,10 +53,7 @@ class CustomerRegistrationView(View):  # Update class name
             messages.warning(request, "Invalid input data")
         return render(request, 'app/customerregistration.html', {'form': form})
 
-#class MyPasswordResetForm(PasswordResetForm):
-    #def __init__(self, *args, **kwargs):
-        #self.user = kwargs.pop('user', None)
-        #super().__init__(*args, **kwargs)
+
 
 class SuccessView(View):
     def get(self, request):
@@ -67,11 +63,11 @@ class SuccessView(View):
         return render(request, 'app/success.html', context=locals())
     
 def health_subsidary_apply(request):
-    # Logic for handling health subsidary application form submission, if needed
+    
     return render(request, 'app/health_subsidary_apply.html')
 
 def locality_tax_apply(request):
-    # Logic for handling locality tax application form submission, if needed
+    
     return render(request, 'app/locality_tax_apply.html')
 
 class healthview(View):
@@ -268,7 +264,7 @@ def savecrimes(request):
         )
 
         # Redirect to the success page
-        return render(request, "app/healthsuccess.html")  # assuming you have a named URL for healthsuccess view
+        return render(request, "app/healthsuccess.html")  
 
     return render(request, 'app/reportingcrimes.html')
 

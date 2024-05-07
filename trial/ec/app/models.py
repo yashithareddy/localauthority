@@ -109,7 +109,7 @@ class LowIncomeSupportApplication(models.Model):
         ('Rejected', 'Rejected'),
         ('On Hold', 'On Hold'),
     ]
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='On Hold') # New field for uploading documents
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='On Hold') 
 
     def __str__(self):
         return f"Low Income Support Application by {self.applicant_name}"
@@ -140,10 +140,10 @@ class LocalityTaxPayment(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=10)
-    credit_card_number = models.CharField(max_length=16)  # Assuming credit card numbers are 16 digits
+    credit_card_number = models.CharField(max_length=16)  
     name_on_card = models.CharField(max_length=100)
-    exp_month = models.CharField(max_length=20)  # Assuming month name like "January"
-    exp_year = models.CharField(max_length=4)  # Assuming year in YYYY format
+    exp_month = models.CharField(max_length=20)  
+    exp_year = models.CharField(max_length=4)  
     cvv = models.CharField(max_length=3)
     STATUS_CHOICES = [
         ('Accepted', 'Accepted'),

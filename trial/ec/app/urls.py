@@ -17,7 +17,7 @@ urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name='login'),
     path('success/', views.SuccessView.as_view(), name='success'),
     path('health_subsidary_apply/', views.health_subsidary_apply, name='health_subsidary_apply'),
-    #path('password-reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', form_class=MyPasswordResetForm), name='password_reset'),
+    
     path('locality_tax_apply/', views.locality_tax_apply, name='locality_tax_apply'),
     path('healthsuccess/', views.success_page, name='healthsuccess'), 
     path('healthsuccess/', healthview.as_view(), name='healthsuccess'),
@@ -32,12 +32,9 @@ urlpatterns = [
     path('save_locality_tax/', views.save_locality_tax_payment, name='save_locality_tax'),
     path('save_child_support_application/', views.save_child_support_application, name='save_child_support_application'),
     path('save_pension_support/', views.save_pension_support_application, name='save_pension_support'),
-   #path('admin/login/', views.admin_login, name='admin_login'),
-    #path('custom_admin/dashboard/', views.admin_dashboard, name='custom_admin_dashboard'),
+   
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
-    #path('change-status/<int:app_id>/', views.change_status, name='change_status'),
-     #path('admin-login/', views.adminlogin, name='admin_login'),
-     #path('admin-login/', views.admin_login, name='admin_login'),
+    
      path('change_status/<str:model_name>/<int:app_id>/', views.change_status, name='change_status'),
      path('news/', views.news_list, name='news_list'),
      path('news/<int:news_id>/', views.news_detail, name='news_detail'),
